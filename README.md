@@ -78,6 +78,6 @@ Project Link: [https://github.com/ArraBiz/invoice-app](https://github.com/ArraBi
 [issues-shield]: https://img.shields.io/github/issues/ArraBiz/invoice-app.svg?style=for-the-badge
 [issues-url]: https://github.com/ArraBiz/invoice-app/issues
 [license-shield]: https://img.shields.io/github/license/ArraBiz/invoice-app.svg?style=for-the-badge
-[license-url]: https://github.com/ArraBiz/invoice-app/blob/master/LICENSE.txt
+[license-url]: https://github.com/ArraBiz/invoice-app/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/awadhtech

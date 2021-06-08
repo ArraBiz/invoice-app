@@ -21,37 +21,22 @@
     <img src="https://awadhtech.com/wp-content/uploads/2021/06/app_icon.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">ArraBiz Invoice App</h3>
-
-  <p align="center">
-    An open source app for all small businesses to easily create invoices and view reports on day-to-day operations.
-    <br />
-    <!-- ADD BUTTONS FOR GOOGLE PLAY STORE & APP STORE -->
-  </p>
+  <h1 align="center">ArraBiz Invoice App</h3>
 </p>
-
-
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
-  <ol>
-    <li><a href="#about-the-project">About The Project</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-</details>
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![ArraBiz Invoice App Screen Shot](https://awadhtech.com/wp-content/uploads/2021/06/mockup.png)
+<p align="center">
+  <a href="https://github.com/ArraBiz/invoice-app">
+    <img src="https://awadhtech.com/wp-content/uploads/2021/06/mockup.png" alt="Logo" width="80" height="80">
+  </a>
+</p>
 
 An open source app for all small businesses to easily create invoices and view reports on day-to-day operations.
 
-Features:
+#### Features:
 * Create your Estimates & Invoices
 * Safe and Quick Data Backup
 * Detailed and Accurate Reports

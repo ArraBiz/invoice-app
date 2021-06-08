@@ -22,7 +22,9 @@
   </a>
 
   <h1 align="center">ArraBiz Invoice App</h1>
+</p>
 
+<p align="center">
   <a href="https://github.com/ArraBiz/invoice-app">
     <img src="https://awadhtech.com/wp-content/uploads/2021/06/mockup-e1623178437154.png" alt="ArraBiz Invoice App Screenshot" width="250" height="475">
   </a>

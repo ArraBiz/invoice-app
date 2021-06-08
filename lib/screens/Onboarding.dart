@@ -34,7 +34,7 @@ class _OnboardingState extends State<Onboarding> {
               children: <Widget>[
                 Center(
                     child: Image(
-                        image: AssetImage('./assets/illustration/illu-1.png'),
+                        image: AssetImage('./assets/illustration/01.png'),
                         width: MySize.getScaledSizeHeight(400),
                         height: MySize.getScaledSizeHeight(320),
                         fit: BoxFit.cover)),
@@ -67,7 +67,7 @@ class _OnboardingState extends State<Onboarding> {
               children: <Widget>[
                 Center(
                     child: Image(
-                  image: AssetImage('./assets/illustration/illu-2.png'),
+                  image: AssetImage('./assets/illustration/02.png'),
                   width: MySize.getScaledSizeWidth(400),
                   height: MySize.getScaledSizeHeight(320),
                   fit: BoxFit.cover,
@@ -102,7 +102,7 @@ class _OnboardingState extends State<Onboarding> {
               children: <Widget>[
                 Center(
                     child: Image(
-                  image: AssetImage('./assets/illustration/illu-3.png'),
+                  image: AssetImage('./assets/illustration/03.png'),
                   width: MySize.getScaledSizeWidth(400),
                   height: MySize.getScaledSizeHeight(320),
                   fit: BoxFit.cover,

@@ -27,16 +27,13 @@ flutter_icons:
 flutter:
   uses-material-design: true
   assets:
-    - assets/sample.pdf
-    - assets/images/avatar.png
-    - assets/images/logo.png
     - assets/images/app_icon.png
     - assets/images/app_icon_transparent.png
 
     #Illustration
-    - assets/illustration/illu-1.png
-    - assets/illustration/illu-2.png
-    - assets/illustration/illu-3.png
+    - assets/illustration/01.png
+    - assets/illustration/02.png
+    - assets/illustration/03.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

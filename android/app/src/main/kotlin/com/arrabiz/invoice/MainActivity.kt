@@ -1,0 +1,6 @@
+package com.arrabiz.invoice
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}

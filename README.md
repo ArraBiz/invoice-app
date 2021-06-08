@@ -47,7 +47,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![ArraBiz Invoice App Screen Shot]](https://awadhtech.com/wp-content/uploads/2021/06/mockup.png)
+![ArraBiz Invoice App Screen Shot] (https://awadhtech.com/wp-content/uploads/2021/06/mockup.png)
 
 An open source app for all small businesses to easily create invoices and view reports on day-to-day operations.
 

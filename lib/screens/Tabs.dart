@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:invoice/AppTheme.dart';
-import 'package:invoice/SizeConfig.dart';
+import 'package:invoice/core/theme.dart';
+import 'package:invoice/core/size_config.dart';
+import 'package:invoice/screens/customers/customer_create.dart';
 import 'package:invoice/screens/products/Products.dart';
 import 'package:invoice/widgets/CustomBottomNavigation.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'Dashboard.dart';
-import 'customers/Customers.dart';
+import 'customers/customer_list.dart';
 import 'estimates/Estimates.dart';
 import 'invoices/Invoices.dart';
 
 class Tabs extends StatefulWidget {
+  const Tabs({Key? key}) : super(key: key);
+
   @override
   _TabsState createState() => _TabsState();
 }
 
 class _TabsState extends State<Tabs> {
   int _currentIndex = 0;
-  ThemeData themeData;
-  PageController _pageController;
+  late ThemeData themeData;
+  late PageController _pageController;
 
-  NavigationBarTheme navigationBarTheme;
+  late NavigationBarTheme navigationBarTheme;
 
   @override
   void initState() {
@@ -51,15 +54,15 @@ class _TabsState extends State<Tabs> {
             Dashboard(),
             Estimates(),
             Invoices(),
-            Customers(),
+            CustomerList(),
             Products()
           ],
         ),
       ),
       bottomNavigationBar: CustomBottomNavigation(
         animationDuration: Duration(milliseconds: 350),
-        selectedItemOverlayColor: navigationBarTheme.selectedOverlayColor,
-        backgroundColor: navigationBarTheme.backgroundColor,
+        selectedItemOverlayColor: navigationBarTheme.selectedOverlayColor!,
+        backgroundColor: navigationBarTheme.backgroundColor!,
         selectedIndex: _currentIndex,
         onItemSelected: (index) {
           setState(() => _currentIndex = index);
@@ -70,20 +73,20 @@ class _TabsState extends State<Tabs> {
               title: "Dashboard",
               icon: Icon(MdiIcons.viewDashboardOutline, size: MySize.size22),
               activeIcon: Icon(MdiIcons.viewDashboard, size: MySize.size22),
-              activeColor: navigationBarTheme.selectedItemColor,
-              inactiveColor: navigationBarTheme.unselectedItemColor),
+              activeColor: navigationBarTheme.selectedItemColor!,
+              inactiveColor: navigationBarTheme.unselectedItemColor!),
           CustomBottomNavigationBarItem(
               title: "Estimates",
               icon: Icon(MdiIcons.fileDocumentOutline, size: MySize.size22),
               activeIcon: Icon(MdiIcons.fileCompare, size: MySize.size22),
-              activeColor: navigationBarTheme.selectedItemColor,
-              inactiveColor: navigationBarTheme.unselectedItemColor),
+              activeColor: navigationBarTheme.selectedItemColor!,
+              inactiveColor: navigationBarTheme.unselectedItemColor!),
           CustomBottomNavigationBarItem(
               title: "Invoices",
               icon: Icon(MdiIcons.fileCheckOutline, size: MySize.size22),
               activeIcon: Icon(MdiIcons.fileCheck, size: MySize.size22),
-              activeColor: navigationBarTheme.selectedItemColor,
-              inactiveColor: navigationBarTheme.unselectedItemColor),
+              activeColor: navigationBarTheme.selectedItemColor!,
+              inactiveColor: navigationBarTheme.unselectedItemColor!),
           CustomBottomNavigationBarItem(
               title: "Customers",
               icon: Icon(
@@ -94,8 +97,8 @@ class _TabsState extends State<Tabs> {
                 MdiIcons.accountMultiple,
                 size: MySize.size22,
               ),
-              activeColor: navigationBarTheme.selectedItemColor,
-              inactiveColor: navigationBarTheme.unselectedItemColor),
+              activeColor: navigationBarTheme.selectedItemColor!,
+              inactiveColor: navigationBarTheme.unselectedItemColor!),
           CustomBottomNavigationBarItem(
               title: "Products",
               icon: Icon(
@@ -106,20 +109,20 @@ class _TabsState extends State<Tabs> {
                 MdiIcons.packageVariant,
                 size: MySize.size22,
               ),
-              activeColor: navigationBarTheme.selectedItemColor,
-              inactiveColor: navigationBarTheme.unselectedItemColor),
+              activeColor: navigationBarTheme.selectedItemColor!,
+              inactiveColor: navigationBarTheme.unselectedItemColor!),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _showBottomSheet(context);
-        },
-        child: Icon(
-          MdiIcons.flashOutline,
-          size: MySize.size30,
-          color: themeData.colorScheme.onPrimary,
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     _showBottomSheet(context);
+      //   },
+      //   child: Icon(
+      //     MdiIcons.flashOutline,
+      //     size: MySize.size30,
+      //     color: themeData.colorScheme.onPrimary,
+      //   ),
+      // ),
     );
   }
 
@@ -134,16 +137,16 @@ class _TabsState extends State<Tabs> {
             decoration: BoxDecoration(
                 color: customAppTheme.bgLayer1,
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(MySize.size16),
-                    topRight: Radius.circular(MySize.size16))),
+                    topLeft: Radius.circular(MySize.size16!),
+                    topRight: Radius.circular(MySize.size16!))),
             child: Padding(
-              padding: EdgeInsets.all(MySize.size16),
+              padding: EdgeInsets.all(MySize.size16!),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text(
                     "Quick Action",
-                    style: AppTheme.getTextStyle(themeData.textTheme.subtitle1,
+                    style: AppTheme.getTextStyle(themeData.textTheme.subtitle1!,
                         fontWeight: 700),
                   ),
                   Divider(),
@@ -167,7 +170,14 @@ class _TabsState extends State<Tabs> {
                             _QuickActionWidget(
                               iconData: MdiIcons.accountPlusOutline,
                               actionText: 'Customer',
-                              onTap: () {},
+                              onTap: () {
+                                // Navigator.pop(context);
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //       builder: (context) => CustomerCreate(), fullscreenDialog: true),
+                                // );
+                              },
                             ),
                             _QuickActionWidget(
                               iconData: MdiIcons.packageVariant,
@@ -196,20 +206,20 @@ class _TabsState extends State<Tabs> {
 class _QuickActionWidget extends StatelessWidget {
   final IconData iconData;
   final String actionText;
-  final Function onTap;
+  final void Function() onTap;
 
   _QuickActionWidget(
-      {Key key,
-      @required this.iconData,
-      @required this.actionText,
-      @required this.onTap})
+      {Key? key,
+      required this.iconData,
+      required this.actionText,
+      required this.onTap})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
     return Container(
-      margin: EdgeInsets.only(top: MySize.size12, bottom: MySize.size12),
+      margin: EdgeInsets.only(top: MySize.size12!, bottom: MySize.size12!),
       child: Column(
         children: <Widget>[
           ClipOval(
@@ -231,10 +241,10 @@ class _QuickActionWidget extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: MySize.size4),
+            padding: EdgeInsets.only(top: MySize.size4!),
             child: Text(
               actionText,
-              style: AppTheme.getTextStyle(themeData.textTheme.caption,
+              style: AppTheme.getTextStyle(themeData.textTheme.caption!,
                   fontWeight: 600),
             ),
           )

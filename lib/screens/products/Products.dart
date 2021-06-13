@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:invoice/AppTheme.dart';
-import 'package:invoice/SizeConfig.dart';
+import 'package:invoice/core/theme.dart';
+import 'package:invoice/core/size_config.dart';
 import 'package:invoice/screens/products/ProductView.dart';
 import 'package:invoice/widgets/CustomAppBar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class Products extends StatefulWidget {
+  const Products({Key? key}) : super(key: key);
+
   @override
   _ProductsState createState() => _ProductsState();
 }
@@ -17,9 +19,9 @@ class SingleProduct {
 }
 
 class _ProductsState extends State<Products> {
-  List<SingleProduct> _productList;
-  ThemeData themeData;
-  CustomAppTheme customAppTheme;
+  late List<SingleProduct> _productList;
+  late ThemeData themeData;
+  late CustomAppTheme customAppTheme;
 
   @override
   void initState() {
@@ -52,41 +54,41 @@ class _ProductsState extends State<Products> {
                         decoration: BoxDecoration(
                           color: customAppTheme.bgLayer3,
                           borderRadius:
-                              BorderRadius.all(Radius.circular(MySize.size8)),
+                              BorderRadius.all(Radius.circular(MySize.size8!)),
                         ),
                         padding: Spacing.all(6),
                         child: Row(
                           children: <Widget>[
                             Expanded(
                               child: Container(
-                                margin: EdgeInsets.only(left: MySize.size16),
+                                margin: EdgeInsets.only(left: MySize.size16!),
                                 child: TextFormField(
                                   style: AppTheme.getTextStyle(
-                                      themeData.textTheme.bodyText2,
+                                      themeData.textTheme.bodyText2!,
                                       letterSpacing: 0,
                                       color: themeData.colorScheme.onBackground,
                                       fontWeight: 500),
                                   decoration: InputDecoration(
                                     hintText: "Search products",
                                     hintStyle: AppTheme.getTextStyle(
-                                        themeData.textTheme.bodyText2,
+                                        themeData.textTheme.bodyText2!,
                                         letterSpacing: 0,
                                         color:
                                             themeData.colorScheme.onBackground,
                                         fontWeight: 500),
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
-                                          Radius.circular(MySize.size8),
+                                          Radius.circular(MySize.size8!),
                                         ),
                                         borderSide: BorderSide.none),
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
-                                          Radius.circular(MySize.size8),
+                                          Radius.circular(MySize.size8!),
                                         ),
                                         borderSide: BorderSide.none),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
-                                          Radius.circular(MySize.size8),
+                                          Radius.circular(MySize.size8!),
                                         ),
                                         borderSide: BorderSide.none),
                                     isDense: true,
@@ -99,14 +101,14 @@ class _ProductsState extends State<Products> {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.all(MySize.size4),
+                              padding: EdgeInsets.all(MySize.size4!),
                               decoration: BoxDecoration(
                                   color: themeData.colorScheme.primary,
                                   borderRadius: BorderRadius.all(
-                                      Radius.circular(MySize.size8))),
+                                      Radius.circular(MySize.size8!))),
                               child: ClipRRect(
                                 borderRadius:
-                                    BorderRadius.circular(MySize.size8),
+                                    BorderRadius.circular(MySize.size8!),
                                 child: Icon(
                                   MdiIcons.magnify,
                                   color: themeData.colorScheme.onPrimary,
@@ -141,7 +143,7 @@ class _ProductsState extends State<Products> {
                               padding: const EdgeInsets.only(left: 8.0),
                               child: Text("Edit",
                                   style: AppTheme.getTextStyle(
-                                      themeData.textTheme.bodyText2,
+                                      themeData.textTheme.bodyText2!,
                                       fontWeight: 500,
                                       color: themeData.colorScheme.onPrimary)),
                             )
@@ -157,7 +159,7 @@ class _ProductsState extends State<Products> {
                           children: <Widget>[
                             Text("Delete",
                                 style: AppTheme.getTextStyle(
-                                    themeData.textTheme.bodyText2,
+                                    themeData.textTheme.bodyText2!,
                                     fontWeight: 500,
                                     color: customAppTheme.onError)),
                             Padding(
@@ -205,11 +207,11 @@ class _ProductsState extends State<Products> {
                                       children: <Widget>[
                                         Text(_productList[index].name,
                                             style: AppTheme.getTextStyle(
-                                                themeData.textTheme.subtitle1,
+                                                themeData.textTheme.subtitle1!,
                                                 fontWeight: 600)),
                                         Text(_productList[index].amount,
                                             style: AppTheme.getTextStyle(
-                                                themeData.textTheme.bodyText2,
+                                                themeData.textTheme.bodyText2!,
                                                 fontWeight: 500)),
                                       ],
                                       crossAxisAlignment:
@@ -240,7 +242,7 @@ class _ProductsState extends State<Products> {
       new SnackBar(
         content: new Text(
           message,
-          style: themeData.textTheme.subtitle2
+          style: themeData.textTheme.subtitle2!
               .merge(TextStyle(color: themeData.colorScheme.onPrimary)),
         ),
         backgroundColor: themeData.colorScheme.primary,

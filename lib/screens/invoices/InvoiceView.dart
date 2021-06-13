@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:invoice/AppTheme.dart';
-import 'package:invoice/SizeConfig.dart';
+import 'package:invoice/core/theme.dart';
+import 'package:invoice/core/size_config.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class InvoiceView extends StatefulWidget {
+  const InvoiceView({Key? key}) : super(key: key);
+
   @override
   _InvoiceViewState createState() => _InvoiceViewState();
 }
 
 class _InvoiceViewState extends State<InvoiceView> {
   List<bool> _dataExpansionPanel = [true, false, false, true];
-  ThemeData themeData;
-  CustomAppTheme customAppTheme;
+  late ThemeData themeData;
+  late CustomAppTheme customAppTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class _InvoiceViewState extends State<InvoiceView> {
             icon: Icon(MdiIcons.chevronLeft),
           ),
           title: Text("Invoice Details",
-              style: AppTheme.getTextStyle(themeData.textTheme.headline6,
+              style: AppTheme.getTextStyle(themeData.textTheme.headline6!,
                   fontWeight: 600)),
           actions: <Widget>[
             IconButton(
@@ -51,12 +53,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                         Text(
                           "Invoice Number",
                           style: AppTheme.getTextStyle(
-                              themeData.textTheme.subtitle2,
+                              themeData.textTheme.subtitle2!,
                               fontWeight: 600),
                         ),
                         Text("# INV-0004",
                             style: AppTheme.getTextStyle(
-                                themeData.textTheme.bodyText1,
+                                themeData.textTheme.bodyText1!,
                                 fontWeight: 500)),
                       ],
                     ),
@@ -66,12 +68,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                         Text(
                           "Reference Number",
                           style: AppTheme.getTextStyle(
-                              themeData.textTheme.subtitle2,
+                              themeData.textTheme.subtitle2!,
                               fontWeight: 600),
                         ),
                         Text("# REF-2502",
                             style: AppTheme.getTextStyle(
-                                themeData.textTheme.bodyText1,
+                                themeData.textTheme.bodyText1!,
                                 fontWeight: 500)),
                       ],
                     )
@@ -90,12 +92,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                         Text(
                           "Invoice Date",
                           style: AppTheme.getTextStyle(
-                              themeData.textTheme.subtitle2,
+                              themeData.textTheme.subtitle2!,
                               fontWeight: 600),
                         ),
                         Text("23 Feb 2021",
                             style: AppTheme.getTextStyle(
-                                themeData.textTheme.bodyText1,
+                                themeData.textTheme.bodyText1!,
                                 fontWeight: 500)),
                       ],
                     ),
@@ -105,12 +107,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                         Text(
                           "Expiry Date",
                           style: AppTheme.getTextStyle(
-                              themeData.textTheme.subtitle2,
+                              themeData.textTheme.subtitle2!,
                               fontWeight: 600),
                         ),
                         Text("28 Feb 2021",
                             style: AppTheme.getTextStyle(
-                                themeData.textTheme.bodyText1,
+                                themeData.textTheme.bodyText1!,
                                 fontWeight: 500)),
                       ],
                     ),
@@ -139,7 +141,7 @@ class _InvoiceViewState extends State<InvoiceView> {
                                   padding: EdgeInsets.all(16),
                                   child: Text("Personal Information",
                                       style: AppTheme.getTextStyle(
-                                          themeData.textTheme.subtitle1,
+                                          themeData.textTheme.subtitle1!,
                                           fontWeight: isExpanded ? 700 : 600,
                                           letterSpacing: 0)));
                             },
@@ -164,7 +166,7 @@ class _InvoiceViewState extends State<InvoiceView> {
                                         ),
                                         Text("Mr. Shantanu Singh",
                                             style: AppTheme.getTextStyle(
-                                                themeData.textTheme.subtitle2,
+                                                themeData.textTheme.subtitle2!,
                                                 height: 1.4,
                                                 fontWeight: 500)),
                                       ],
@@ -183,7 +185,7 @@ class _InvoiceViewState extends State<InvoiceView> {
                                         ),
                                         Text("shantanusingh0308@gmail.com",
                                             style: AppTheme.getTextStyle(
-                                                themeData.textTheme.subtitle2,
+                                                themeData.textTheme.subtitle2!,
                                                 height: 1.4,
                                                 fontWeight: 500,
                                                 letterSpacing: 0.3)),
@@ -203,7 +205,7 @@ class _InvoiceViewState extends State<InvoiceView> {
                                         ),
                                         Text("9687942759",
                                             style: AppTheme.getTextStyle(
-                                                themeData.textTheme.subtitle2,
+                                                themeData.textTheme.subtitle2!,
                                                 fontWeight: 500,
                                                 height: 1.4)),
                                       ],
@@ -219,7 +221,7 @@ class _InvoiceViewState extends State<InvoiceView> {
                                   padding: EdgeInsets.all(16),
                                   child: Text("Billing Address",
                                       style: AppTheme.getTextStyle(
-                                          themeData.textTheme.subtitle1,
+                                          themeData.textTheme.subtitle1!,
                                           fontWeight: isExpanded ? 700 : 600,
                                           letterSpacing: 0)));
                             },
@@ -232,22 +234,22 @@ class _InvoiceViewState extends State<InvoiceView> {
                                   children: <Widget>[
                                     Text("J2-1702, The Meadows",
                                         style: AppTheme.getTextStyle(
-                                            themeData.textTheme.subtitle2,
+                                            themeData.textTheme.subtitle2!,
                                             fontWeight: 500,
                                             height: 1.4)),
                                     Text("Adani Shantigram",
                                         style: AppTheme.getTextStyle(
-                                            themeData.textTheme.subtitle2,
+                                            themeData.textTheme.subtitle2!,
                                             fontWeight: 500,
                                             height: 1.4)),
                                     Text("Ahmedabad - 382421",
                                         style: AppTheme.getTextStyle(
-                                            themeData.textTheme.subtitle2,
+                                            themeData.textTheme.subtitle2!,
                                             fontWeight: 500,
                                             height: 1.4)),
                                     Text("Gujarat, India",
                                         style: AppTheme.getTextStyle(
-                                            themeData.textTheme.subtitle2,
+                                            themeData.textTheme.subtitle2!,
                                             fontWeight: 500,
                                             height: 1.4)),
                                   ],
@@ -261,7 +263,7 @@ class _InvoiceViewState extends State<InvoiceView> {
                                   padding: EdgeInsets.all(16),
                                   child: Text("Items",
                                       style: AppTheme.getTextStyle(
-                                          themeData.textTheme.subtitle1,
+                                          themeData.textTheme.subtitle1!,
                                           fontWeight: isExpanded ? 700 : 600,
                                           letterSpacing: 0)));
                             },
@@ -283,7 +285,7 @@ class _InvoiceViewState extends State<InvoiceView> {
                                               Text("Product Photography",
                                                   style: AppTheme.getTextStyle(
                                                     themeData
-                                                        .textTheme.bodyText1,
+                                                        .textTheme.bodyText1!,
                                                     height: 1.4,
                                                   )),
                                             ],
@@ -295,12 +297,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                                               Text("1 * ₹ 200.00",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.caption,
+                                                          .textTheme.caption!,
                                                       xMuted: true)),
                                               Text("₹ 200.00",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.caption,
+                                                          .textTheme.caption!,
                                                       height: 1.4)),
                                             ],
                                           ),
@@ -311,12 +313,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                                               Text("SGST (9%)",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.caption,
+                                                          .textTheme.caption!,
                                                       xMuted: true)),
                                               Text("₹ 18.00",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.caption,
+                                                          .textTheme.caption!,
                                                       height: 1.4)),
                                             ],
                                           ),
@@ -327,12 +329,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                                               Text("CGST (9%)",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.caption,
+                                                          .textTheme.caption!,
                                                       xMuted: true)),
                                               Text("₹ 18.00",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.caption,
+                                                          .textTheme.caption!,
                                                       height: 1.4)),
                                             ],
                                           ),
@@ -346,12 +348,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                                               Text("AMOUNT",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.caption,
+                                                          .textTheme.caption!,
                                                       xMuted: true)),
                                               Text("₹ 236.00",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.bodyText1,
+                                                          .textTheme.bodyText1!,
                                                       color:
                                                           themeData.accentColor,
                                                       fontWeight: 600,
@@ -373,7 +375,7 @@ class _InvoiceViewState extends State<InvoiceView> {
                                               Text("Event Photography",
                                                   style: AppTheme.getTextStyle(
                                                     themeData
-                                                        .textTheme.bodyText1,
+                                                        .textTheme.bodyText1!,
                                                     height: 1.4,
                                                   )),
                                             ],
@@ -385,12 +387,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                                               Text("1 * ₹ 4000.00",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.caption,
+                                                          .textTheme.caption!,
                                                       xMuted: true)),
                                               Text("₹ 4000.00",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.caption,
+                                                          .textTheme.caption!,
                                                       height: 1.4)),
                                             ],
                                           ),
@@ -401,12 +403,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                                               Text("SGST (9%)",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.caption,
+                                                          .textTheme.caption!,
                                                       xMuted: true)),
                                               Text("₹ 360.00",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.caption,
+                                                          .textTheme.caption!,
                                                       height: 1.4)),
                                             ],
                                           ),
@@ -417,12 +419,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                                               Text("CGST (9%)",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.caption,
+                                                          .textTheme.caption!,
                                                       xMuted: true)),
                                               Text("₹ 360.00",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.caption,
+                                                          .textTheme.caption!,
                                                       height: 1.4)),
                                             ],
                                           ),
@@ -436,12 +438,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                                               Text("AMOUNT",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.caption,
+                                                          .textTheme.caption!,
                                                       xMuted: true)),
                                               Text("₹ 4720.00",
                                                   style: AppTheme.getTextStyle(
                                                       themeData
-                                                          .textTheme.bodyText1,
+                                                          .textTheme.bodyText1!,
                                                       color:
                                                           themeData.accentColor,
                                                       fontWeight: 600,
@@ -462,7 +464,7 @@ class _InvoiceViewState extends State<InvoiceView> {
                                   padding: EdgeInsets.all(16),
                                   child: Text("Summary",
                                       style: AppTheme.getTextStyle(
-                                          themeData.textTheme.subtitle1,
+                                          themeData.textTheme.subtitle1!,
                                           fontWeight: isExpanded ? 700 : 600,
                                           letterSpacing: 0)));
                             },
@@ -478,11 +480,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                                       children: <Widget>[
                                         Text("SUBTOTAL",
                                             style: AppTheme.getTextStyle(
-                                                themeData.textTheme.caption,
+                                                themeData.textTheme.caption!,
                                                 xMuted: true)),
                                         Text("₹ 4200.00",
                                             style: AppTheme.getTextStyle(
-                                                themeData.textTheme.bodyText1)),
+                                                themeData
+                                                    .textTheme.bodyText1!)),
                                       ],
                                     ),
                                     Padding(
@@ -493,11 +496,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                                         children: <Widget>[
                                           Text("DISCOUNT",
                                               style: AppTheme.getTextStyle(
-                                                  themeData.textTheme.caption,
+                                                  themeData.textTheme.caption!,
                                                   xMuted: true)),
                                           Text("₹ 0.00",
                                               style: AppTheme.getTextStyle(
-                                                  themeData.textTheme.bodyText1,
+                                                  themeData
+                                                      .textTheme.bodyText1!,
                                                   fontWeight: 500)),
                                         ],
                                       ),
@@ -511,11 +515,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                                         children: <Widget>[
                                           Text("SGST (9%)",
                                               style: AppTheme.getTextStyle(
-                                                  themeData.textTheme.caption,
+                                                  themeData.textTheme.caption!,
                                                   xMuted: true)),
                                           Text("₹ 378.00",
                                               style: AppTheme.getTextStyle(
-                                                  themeData.textTheme.bodyText1,
+                                                  themeData
+                                                      .textTheme.bodyText1!,
                                                   fontWeight: 500)),
                                         ],
                                       ),
@@ -528,11 +533,12 @@ class _InvoiceViewState extends State<InvoiceView> {
                                         children: <Widget>[
                                           Text("CGST (9%)",
                                               style: AppTheme.getTextStyle(
-                                                  themeData.textTheme.caption,
+                                                  themeData.textTheme.caption!,
                                                   xMuted: true)),
                                           Text("₹ 378.00",
                                               style: AppTheme.getTextStyle(
-                                                  themeData.textTheme.bodyText1,
+                                                  themeData
+                                                      .textTheme.bodyText1!,
                                                   fontWeight: 500)),
                                         ],
                                       ),
@@ -546,12 +552,13 @@ class _InvoiceViewState extends State<InvoiceView> {
                                         children: <Widget>[
                                           Text("TOTAL AMOUNT",
                                               style: AppTheme.getTextStyle(
-                                                  themeData.textTheme.caption,
+                                                  themeData.textTheme.caption!,
                                                   fontWeight: 600,
                                                   xMuted: true)),
                                           Text("₹ 4956.00",
                                               style: AppTheme.getTextStyle(
-                                                  themeData.textTheme.subtitle1,
+                                                  themeData
+                                                      .textTheme.subtitle1!,
                                                   color: themeData.primaryColor,
                                                   fontWeight: 800)),
                                         ],
@@ -579,7 +586,7 @@ class _InvoiceViewState extends State<InvoiceView> {
             child: Container(
               color: customAppTheme.bgLayer1,
               child: Padding(
-                padding: EdgeInsets.all(MySize.size0),
+                padding: EdgeInsets.all(0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
@@ -587,7 +594,7 @@ class _InvoiceViewState extends State<InvoiceView> {
                       dense: true,
                       title: Text("ACTIONS",
                           style: AppTheme.getTextStyle(
-                              themeData.textTheme.caption,
+                              themeData.textTheme.caption!,
                               fontWeight: 600)),
                     ),
                     Divider(
@@ -599,7 +606,7 @@ class _InvoiceViewState extends State<InvoiceView> {
                             color: themeData.colorScheme.primary),
                         title: Text("Send Invoice",
                             style: AppTheme.getTextStyle(
-                                themeData.textTheme.bodyText1,
+                                themeData.textTheme.bodyText1!,
                                 color: themeData.colorScheme.primary,
                                 fontWeight: 600))),
                     ListTile(
@@ -608,7 +615,7 @@ class _InvoiceViewState extends State<InvoiceView> {
                             color: themeData.colorScheme.primary),
                         title: Text("Share on Whatsapp",
                             style: AppTheme.getTextStyle(
-                                themeData.textTheme.bodyText1,
+                                themeData.textTheme.bodyText1!,
                                 color: themeData.colorScheme.primary,
                                 fontWeight: 600))),
                     ListTile(
@@ -619,7 +626,7 @@ class _InvoiceViewState extends State<InvoiceView> {
                         ),
                         title: Text("Delete",
                             style: AppTheme.getTextStyle(
-                                themeData.textTheme.bodyText1,
+                                themeData.textTheme.bodyText1!,
                                 color: themeData.colorScheme.error,
                                 fontWeight: 600))),
                   ],

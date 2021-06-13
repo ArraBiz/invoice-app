@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:invoice/AppTheme.dart';
-import 'package:invoice/SizeConfig.dart';
+import 'package:invoice/core/theme.dart';
+import 'package:invoice/core/size_config.dart';
 import 'package:invoice/screens/Tabs.dart';
 import 'package:invoice/widgets/onBoarding/CustomOnBoardingWidget.dart';
 import 'package:invoice/widgets/onBoarding/UI/pages.dart';
 
 class Onboarding extends StatefulWidget {
-  Onboarding({Key key}) : super(key: key);
+  const Onboarding({Key? key}) : super(key: key);
 
   @override
   _OnboardingState createState() => _OnboardingState();
 }
 
 class _OnboardingState extends State<Onboarding> {
-  ThemeData themeData;
-  CustomAppTheme customAppTheme;
+  late ThemeData themeData;
+  late CustomAppTheme customAppTheme;
 
   Widget build(BuildContext context) {
     MySize().init(context);
@@ -27,7 +27,7 @@ class _OnboardingState extends State<Onboarding> {
         PageViewModel(
           customAppTheme.bgLayer1,
           Padding(
-            padding: EdgeInsets.all(MySize.size40),
+            padding: EdgeInsets.all(MySize.size40!),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -40,12 +40,12 @@ class _OnboardingState extends State<Onboarding> {
                         fit: BoxFit.cover)),
                 SizedBox(height: 30.0),
                 Text('CREATE',
-                    style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
+                    style: AppTheme.getTextStyle(themeData.textTheme.bodyText1!,
                         fontWeight: 600)),
                 SizedBox(height: 15.0),
                 Text(
                   'Create estimates \& invoices on the go.',
-                  style: themeData.textTheme.bodyText2.merge(
+                  style: themeData.textTheme.bodyText2!.merge(
                     TextStyle(
                         color:
                             themeData.colorScheme.onBackground.withAlpha(200),
@@ -75,13 +75,13 @@ class _OnboardingState extends State<Onboarding> {
                 SizedBox(height: 30.0),
                 Text(
                   'SHARE',
-                  style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
+                  style: AppTheme.getTextStyle(themeData.textTheme.bodyText1!,
                       fontWeight: 600),
                 ),
                 SizedBox(height: 15.0),
                 Text(
                     'Share estimates \& invoices on e-mail, whatsapp or store in device.',
-                    style: themeData.textTheme.bodyText2.merge(
+                    style: themeData.textTheme.bodyText2!.merge(
                       TextStyle(
                           color:
                               themeData.colorScheme.onBackground.withAlpha(200),
@@ -95,7 +95,7 @@ class _OnboardingState extends State<Onboarding> {
         PageViewModel(
           customAppTheme.bgLayer1,
           Padding(
-            padding: EdgeInsets.all(MySize.size40),
+            padding: EdgeInsets.all(MySize.size40!),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,11 +109,11 @@ class _OnboardingState extends State<Onboarding> {
                 )),
                 SizedBox(height: MySize.size30),
                 Text('GENERATE',
-                    style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
+                    style: AppTheme.getTextStyle(themeData.textTheme.bodyText1!,
                         fontWeight: 600)),
                 SizedBox(height: 15.0),
                 Text('Generate reports with ease in PDF/CSV format.',
-                    style: themeData.textTheme.bodyText2.merge(
+                    style: themeData.textTheme.bodyText2!.merge(
                       TextStyle(
                           color:
                               themeData.colorScheme.onBackground.withAlpha(200),
@@ -138,7 +138,7 @@ class _OnboardingState extends State<Onboarding> {
           child: Container(
             padding: EdgeInsets.all(8),
             child: Text("DONE".toUpperCase(),
-                style: AppTheme.getTextStyle(themeData.textTheme.subtitle2,
+                style: AppTheme.getTextStyle(themeData.textTheme.subtitle2!,
                     color: themeData.colorScheme.primary, fontWeight: 700)),
           ),
         ),
@@ -154,7 +154,7 @@ class _OnboardingState extends State<Onboarding> {
           child: Container(
             padding: EdgeInsets.all(8),
             child: Text("Skip".toUpperCase(),
-                style: AppTheme.getTextStyle(themeData.textTheme.subtitle2,
+                style: AppTheme.getTextStyle(themeData.textTheme.subtitle2!,
                     // color: themeData.colorScheme.secondary,
                     xMuted: true,
                     fontWeight: 700)),

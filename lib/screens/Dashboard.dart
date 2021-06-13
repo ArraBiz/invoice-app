@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:invoice/AppTheme.dart';
-import 'package:invoice/SizeConfig.dart';
+import 'package:invoice/core/theme.dart';
+import 'package:invoice/core/size_config.dart';
 import 'package:invoice/widgets/CustomAppBar.dart';
 import 'package:invoice/widgets/SalesChart.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class Dashboard extends StatefulWidget {
+  const Dashboard({Key? key}) : super(key: key);
+
   @override
   _DashboardState createState() => _DashboardState();
 }
@@ -13,8 +15,8 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   final GlobalKey _simpleMenuKey = new GlobalKey();
   bool connected = false;
-  ThemeData themeData;
-  CustomAppTheme customAppTheme;
+  late ThemeData themeData;
+  late CustomAppTheme customAppTheme;
 
   List<String> _simpleChoice = ["Weekly", "Monthly", "Yearly"];
 
@@ -36,7 +38,7 @@ class _DashboardState extends State<Dashboard> {
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.only(
-                        left: MySize.size24, right: MySize.size24),
+                        left: MySize.size24!, right: MySize.size24!),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -44,7 +46,7 @@ class _DashboardState extends State<Dashboard> {
                         Text(
                           "OVERVIEW",
                           style: AppTheme.getTextStyle(
-                              themeData.textTheme.caption,
+                              themeData.textTheme.caption!,
                               fontWeight: 600),
                         ),
                         PopupMenuButton(
@@ -56,7 +58,7 @@ class _DashboardState extends State<Dashboard> {
                                   value: choice,
                                   child: Text(choice,
                                       style: TextStyle(letterSpacing: 0.15)
-                                          .merge(themeData.textTheme.bodyText2
+                                          .merge(themeData.textTheme.bodyText2!
                                               .merge(TextStyle(
                                                   color: themeData
                                                       .colorScheme.onBackground,
@@ -74,7 +76,7 @@ class _DashboardState extends State<Dashboard> {
                                   decoration: BoxDecoration(
                                       color: themeData.colorScheme.primary,
                                       borderRadius: BorderRadius.all(
-                                          Radius.circular(MySize.size4)),
+                                          Radius.circular(MySize.size4!)),
                                       boxShadow: [
                                         BoxShadow(
                                             color: customAppTheme.shadowColor,
@@ -89,22 +91,22 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   Container(
                       margin: EdgeInsets.only(
-                          top: MySize.size8,
-                          bottom: MySize.size16,
-                          left: MySize.size24,
-                          right: MySize.size24),
-                      padding: EdgeInsets.all(MySize.size6),
+                          top: MySize.size8!,
+                          bottom: MySize.size16!,
+                          left: MySize.size24!,
+                          right: MySize.size24!),
+                      padding: EdgeInsets.all(MySize.size6!),
                       decoration: BoxDecoration(
                         color: customAppTheme.bgLayer3,
                         borderRadius:
-                            BorderRadius.all(Radius.circular(MySize.size8)),
+                            BorderRadius.all(Radius.circular(MySize.size8!)),
                         border: Border.all(
                             width: 0.7, color: customAppTheme.bgLayer3),
                         boxShadow: [
                           BoxShadow(
                               color:
-                                  themeData.cardTheme.shadowColor.withAlpha(28),
-                              blurRadius: MySize.size4,
+                                  themeData.cardTheme.shadowColor!.withAlpha(28),
+                              blurRadius: MySize.size4!,
                               offset: Offset.zero),
                         ],
                       ),
@@ -115,30 +117,30 @@ class _DashboardState extends State<Dashboard> {
                           ))),
                   Container(
                     padding: EdgeInsets.only(
-                        left: MySize.size24, top: MySize.size16),
+                        left: MySize.size24!, top: MySize.size16!),
                     child: Text(
                       "DUE INVOICES",
-                      style: AppTheme.getTextStyle(themeData.textTheme.caption,
+                      style: AppTheme.getTextStyle(themeData.textTheme.caption!,
                           fontWeight: 600),
                     ),
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: MySize.size8,
-                        bottom: MySize.size16,
-                        left: MySize.size24,
-                        right: MySize.size24),
-                    padding: EdgeInsets.all(MySize.size4),
+                        top: MySize.size8!,
+                        bottom: MySize.size16!,
+                        left: MySize.size24!,
+                        right: MySize.size24!),
+                    padding: EdgeInsets.all(MySize.size4!),
                     decoration: BoxDecoration(
                       color: customAppTheme.bgLayer3,
                       borderRadius:
-                          BorderRadius.all(Radius.circular(MySize.size8)),
+                          BorderRadius.all(Radius.circular(MySize.size8!)),
                       border: Border.all(
                           width: 0.7, color: customAppTheme.bgLayer3),
                       boxShadow: [
                         BoxShadow(
-                          color: themeData.cardTheme.shadowColor.withAlpha(28),
-                          blurRadius: MySize.size4,
+                          color: themeData.cardTheme.shadowColor!.withAlpha(28),
+                          blurRadius: MySize.size4!,
                           offset: Offset.zero,
                         ),
                       ],
@@ -181,7 +183,7 @@ class _DashboardState extends State<Dashboard> {
                                 onPressed: () {},
                                 child: Text("VIEW ALL",
                                     style: AppTheme.getTextStyle(
-                                        themeData.textTheme.caption,
+                                        themeData.textTheme.caption!,
                                         color: themeData.colorScheme.primary,
                                         letterSpacing: 0.5,
                                         fontWeight: 600))),
@@ -192,32 +194,32 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   Container(
                     padding: EdgeInsets.only(
-                        left: MySize.size24, top: MySize.size16),
+                        left: MySize.size24!, top: MySize.size16!),
                     child: Text(
                       "RECENT ESTIMATES",
-                      style: AppTheme.getTextStyle(themeData.textTheme.caption,
+                      style: AppTheme.getTextStyle(themeData.textTheme.caption!,
                           fontWeight: 600),
                     ),
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: MySize.size8,
-                        bottom: MySize.size16,
-                        left: MySize.size24,
-                        right: MySize.size24),
-                    padding: EdgeInsets.all(MySize.size4),
+                        top: MySize.size8!,
+                        bottom: MySize.size16!,
+                        left: MySize.size24!,
+                        right: MySize.size24!),
+                    padding: EdgeInsets.all(MySize.size4!),
                     decoration: BoxDecoration(
                       color: customAppTheme.bgLayer3,
                       borderRadius:
-                          BorderRadius.all(Radius.circular(MySize.size8)),
+                          BorderRadius.all(Radius.circular(MySize.size8!)),
                       border: Border.all(
                         width: 0.7,
                         color: customAppTheme.bgLayer3,
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: themeData.cardTheme.shadowColor.withAlpha(28),
-                          blurRadius: MySize.size4,
+                          color: themeData.cardTheme.shadowColor!.withAlpha(28),
+                          blurRadius: MySize.size4!,
                           offset: Offset.zero,
                         ),
                       ],
@@ -260,7 +262,7 @@ class _DashboardState extends State<Dashboard> {
                                 onPressed: () {},
                                 child: Text("VIEW ALL",
                                     style: AppTheme.getTextStyle(
-                                        themeData.textTheme.caption,
+                                        themeData.textTheme.caption!,
                                         color: themeData.colorScheme.primary,
                                         letterSpacing: 0.5,
                                         fontWeight: 600))),
@@ -282,11 +284,11 @@ class _SingleActivity extends StatelessWidget {
   final Color activityColor;
 
   const _SingleActivity(
-      {Key key,
-      @required this.title,
-      @required this.subtitle,
-      @required this.activity,
-      @required this.activityColor})
+      {Key? key,
+      required this.title,
+      required this.subtitle,
+      required this.activity,
+      required this.activityColor})
       : super(key: key);
 
   @override
@@ -294,10 +296,10 @@ class _SingleActivity extends StatelessWidget {
     ThemeData themeData = Theme.of(context);
     return Container(
       padding: EdgeInsets.only(
-          top: MySize.size8,
-          bottom: MySize.size8,
-          left: MySize.size16,
-          right: MySize.size16),
+          top: MySize.size8!,
+          bottom: MySize.size8!,
+          left: MySize.size16!,
+          right: MySize.size16!),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -306,15 +308,15 @@ class _SingleActivity extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(title,
-                  style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
+                  style: AppTheme.getTextStyle(themeData.textTheme.bodyText1!,
                       fontWeight: 700)),
               Text(subtitle,
-                  style: AppTheme.getTextStyle(themeData.textTheme.caption,
+                  style: AppTheme.getTextStyle(themeData.textTheme.caption!,
                       fontWeight: 400)),
             ],
           ),
           Text(activity,
-              style: AppTheme.getTextStyle(themeData.textTheme.subtitle2,
+              style: AppTheme.getTextStyle(themeData.textTheme.subtitle2!,
                   fontWeight: 600, color: activityColor, letterSpacing: 0)),
         ],
       ),

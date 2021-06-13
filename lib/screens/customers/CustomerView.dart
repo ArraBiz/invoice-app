@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:invoice/AppTheme.dart';
-import 'package:invoice/SizeConfig.dart';
+import 'package:invoice/core/theme.dart';
+import 'package:invoice/core/size_config.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CustomerView extends StatefulWidget {
+  const CustomerView({Key? key}) : super(key: key);
+
   @override
   _CustomerViewState createState() => _CustomerViewState();
 }
 
 class _CustomerViewState extends State<CustomerView> {
-  ThemeData themeData;
-  CustomAppTheme customAppTheme;
+  late ThemeData themeData;
+  late CustomAppTheme customAppTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class _CustomerViewState extends State<CustomerView> {
             icon: Icon(MdiIcons.chevronLeft),
           ),
           title: Text("Customer Details",
-              style: AppTheme.getTextStyle(themeData.textTheme.headline6,
+              style: AppTheme.getTextStyle(themeData.textTheme.headline6!,
                   fontWeight: 600)),
         ),
         body: ListView(
@@ -36,11 +38,11 @@ class _CustomerViewState extends State<CustomerView> {
               children: <Widget>[
                 Text(
                   "Customer Name",
-                  style: AppTheme.getTextStyle(themeData.textTheme.subtitle2,
+                  style: AppTheme.getTextStyle(themeData.textTheme.subtitle2!,
                       fontWeight: 600),
                 ),
                 Text("Shantanu Rajan Singh",
-                    style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
+                    style: AppTheme.getTextStyle(themeData.textTheme.bodyText1!,
                         fontWeight: 500)),
               ],
             ),
@@ -52,11 +54,11 @@ class _CustomerViewState extends State<CustomerView> {
               children: <Widget>[
                 Text(
                   "Mobile Number",
-                  style: AppTheme.getTextStyle(themeData.textTheme.subtitle2,
+                  style: AppTheme.getTextStyle(themeData.textTheme.subtitle2!,
                       fontWeight: 600),
                 ),
                 Text("+91 8238508418",
-                    style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
+                    style: AppTheme.getTextStyle(themeData.textTheme.bodyText1!,
                         fontWeight: 500)),
               ],
             ),
@@ -68,11 +70,11 @@ class _CustomerViewState extends State<CustomerView> {
               children: <Widget>[
                 Text(
                   "Customer Email",
-                  style: AppTheme.getTextStyle(themeData.textTheme.subtitle2,
+                  style: AppTheme.getTextStyle(themeData.textTheme.subtitle2!,
                       fontWeight: 600),
                 ),
                 Text("shantanusingh0308@gmail.com",
-                    style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
+                    style: AppTheme.getTextStyle(themeData.textTheme.bodyText1!,
                         fontWeight: 500)),
               ],
             ),
@@ -84,7 +86,7 @@ class _CustomerViewState extends State<CustomerView> {
               children: <Widget>[
                 Text(
                   "Billing Address",
-                  style: AppTheme.getTextStyle(themeData.textTheme.subtitle2,
+                  style: AppTheme.getTextStyle(themeData.textTheme.subtitle2!,
                       fontWeight: 600),
                 ),
                 Column(
@@ -92,22 +94,22 @@ class _CustomerViewState extends State<CustomerView> {
                   children: <Widget>[
                     Text("J2-1702, The Meadows",
                         style: AppTheme.getTextStyle(
-                            themeData.textTheme.subtitle2,
+                            themeData.textTheme.subtitle2!,
                             fontWeight: 500,
                             height: 1.4)),
                     Text("Adani Shantigram",
                         style: AppTheme.getTextStyle(
-                            themeData.textTheme.subtitle2,
+                            themeData.textTheme.subtitle2!,
                             fontWeight: 500,
                             height: 1.4)),
                     Text("Ahmedabad - 382421",
                         style: AppTheme.getTextStyle(
-                            themeData.textTheme.subtitle2,
+                            themeData.textTheme.subtitle2!,
                             fontWeight: 500,
                             height: 1.4)),
                     Text("Gujarat, India",
                         style: AppTheme.getTextStyle(
-                            themeData.textTheme.subtitle2,
+                            themeData.textTheme.subtitle2!,
                             fontWeight: 500,
                             height: 1.4)),
                   ],
@@ -121,7 +123,7 @@ class _CustomerViewState extends State<CustomerView> {
                   width: MediaQuery.of(context).size.width * 0.3,
                   decoration: BoxDecoration(
                     borderRadius:
-                        BorderRadius.all(Radius.circular(MySize.size12)),
+                        BorderRadius.all(Radius.circular(MySize.size12!)),
                     boxShadow: [
                       BoxShadow(
                         color: themeData.primaryColor.withAlpha(24),
@@ -130,20 +132,20 @@ class _CustomerViewState extends State<CustomerView> {
                       ),
                     ],
                   ),
-                  margin: EdgeInsets.only(top: MySize.size24),
+                  margin: EdgeInsets.only(top: MySize.size24!),
                   child: TextButton(
                     style: TextButton.styleFrom(
                       backgroundColor: themeData.primaryColor,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(MySize.size12)),
+                          borderRadius: BorderRadius.circular(MySize.size12!)),
                       padding: EdgeInsets.only(
-                          top: MySize.size16, bottom: MySize.size16),
+                          top: MySize.size16!, bottom: MySize.size16!),
                     ),
                     onPressed: () {},
                     child: Text(
                       "Edit".toUpperCase(),
                       style: AppTheme.getTextStyle(
-                          themeData.textTheme.bodyText2,
+                          themeData.textTheme.bodyText2!,
                           fontWeight: 600,
                           color: themeData.colorScheme.onPrimary,
                           letterSpacing: 0.5),
@@ -154,7 +156,7 @@ class _CustomerViewState extends State<CustomerView> {
                   width: MediaQuery.of(context).size.width * 0.3,
                   decoration: BoxDecoration(
                     borderRadius:
-                        BorderRadius.all(Radius.circular(MySize.size12)),
+                        BorderRadius.all(Radius.circular(MySize.size12!)),
                     boxShadow: [
                       BoxShadow(
                         color: themeData.errorColor.withAlpha(24),
@@ -163,20 +165,20 @@ class _CustomerViewState extends State<CustomerView> {
                       ),
                     ],
                   ),
-                  margin: EdgeInsets.only(top: MySize.size24),
+                  margin: EdgeInsets.only(top: MySize.size24!),
                   child: TextButton(
                     style: TextButton.styleFrom(
                       backgroundColor: themeData.primaryColor,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(MySize.size12)),
+                          borderRadius: BorderRadius.circular(MySize.size12!)),
                       padding: EdgeInsets.only(
-                          top: MySize.size16, bottom: MySize.size16),
+                          top: MySize.size16!, bottom: MySize.size16!),
                     ),
                     onPressed: () {},
                     child: Text(
                       "Delete".toUpperCase(),
                       style: AppTheme.getTextStyle(
-                          themeData.textTheme.bodyText2,
+                          themeData.textTheme.bodyText2!,
                           fontWeight: 600,
                           color: customAppTheme.onError,
                           letterSpacing: 0.5),

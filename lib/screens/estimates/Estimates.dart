@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:invoice/AppTheme.dart';
-import 'package:invoice/SizeConfig.dart';
+import 'package:invoice/core/theme.dart';
+import 'package:invoice/core/size_config.dart';
 import 'package:invoice/screens/estimates/EstimateView.dart';
 import 'package:invoice/widgets/CustomAppBar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class Estimates extends StatefulWidget {
+  const Estimates({Key? key}) : super(key: key);
+
   @override
   _EstimatesState createState() => _EstimatesState();
 }
@@ -17,9 +19,9 @@ class SingleEstimate {
 }
 
 class _EstimatesState extends State<Estimates> {
-  List<SingleEstimate> _estimateList;
-  ThemeData themeData;
-  CustomAppTheme customAppTheme;
+  late List<SingleEstimate> _estimateList;
+  late ThemeData themeData;
+  late CustomAppTheme customAppTheme;
 
   @override
   void initState() {
@@ -48,41 +50,41 @@ class _EstimatesState extends State<Estimates> {
                         decoration: BoxDecoration(
                           color: customAppTheme.bgLayer3,
                           borderRadius:
-                              BorderRadius.all(Radius.circular(MySize.size8)),
+                              BorderRadius.all(Radius.circular(MySize.size8!)),
                         ),
                         padding: Spacing.all(6),
                         child: Row(
                           children: <Widget>[
                             Expanded(
                               child: Container(
-                                margin: EdgeInsets.only(left: MySize.size16),
+                                margin: EdgeInsets.only(left: MySize.size16!),
                                 child: TextFormField(
                                   style: AppTheme.getTextStyle(
-                                      themeData.textTheme.bodyText2,
+                                      themeData.textTheme.bodyText2!,
                                       letterSpacing: 0,
                                       color: themeData.colorScheme.onBackground,
                                       fontWeight: 500),
                                   decoration: InputDecoration(
                                     hintText: "Search estimates",
                                     hintStyle: AppTheme.getTextStyle(
-                                        themeData.textTheme.bodyText2,
+                                        themeData.textTheme.bodyText2!,
                                         letterSpacing: 0,
                                         color:
                                             themeData.colorScheme.onBackground,
                                         fontWeight: 500),
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
-                                          Radius.circular(MySize.size8),
+                                          Radius.circular(MySize.size8!),
                                         ),
                                         borderSide: BorderSide.none),
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
-                                          Radius.circular(MySize.size8),
+                                          Radius.circular(MySize.size8!),
                                         ),
                                         borderSide: BorderSide.none),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
-                                          Radius.circular(MySize.size8),
+                                          Radius.circular(MySize.size8!),
                                         ),
                                         borderSide: BorderSide.none),
                                     isDense: true,
@@ -95,14 +97,14 @@ class _EstimatesState extends State<Estimates> {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.all(MySize.size4),
+                              padding: EdgeInsets.all(MySize.size4!),
                               decoration: BoxDecoration(
                                   color: themeData.colorScheme.primary,
                                   borderRadius: BorderRadius.all(
-                                      Radius.circular(MySize.size8))),
+                                      Radius.circular(MySize.size8!))),
                               child: ClipRRect(
                                 borderRadius:
-                                    BorderRadius.circular(MySize.size8),
+                                    BorderRadius.circular(MySize.size8!),
                                 child: Icon(
                                   MdiIcons.magnify,
                                   color: themeData.colorScheme.onPrimary,
@@ -123,19 +125,19 @@ class _EstimatesState extends State<Estimates> {
                             });
                       },
                       child: Container(
-                        margin: EdgeInsets.only(left: MySize.size16),
+                        margin: EdgeInsets.only(left: MySize.size16!),
                         decoration: BoxDecoration(
                           color: themeData.backgroundColor,
                           borderRadius:
-                              BorderRadius.all(Radius.circular(MySize.size8)),
+                              BorderRadius.all(Radius.circular(MySize.size8!)),
                           boxShadow: [
                             BoxShadow(
                               color: customAppTheme.shadowColor,
-                              blurRadius: MySize.size4,
+                              blurRadius: MySize.size4!,
                             )
                           ],
                         ),
-                        padding: EdgeInsets.all(MySize.size8),
+                        padding: EdgeInsets.all(MySize.size8!),
                         child: Icon(
                           MdiIcons.sort,
                           color: themeData.colorScheme.primary,
@@ -166,7 +168,7 @@ class _EstimatesState extends State<Estimates> {
                               padding: const EdgeInsets.only(left: 8.0),
                               child: Text("Convert to Invoice",
                                   style: AppTheme.getTextStyle(
-                                      themeData.textTheme.bodyText2,
+                                      themeData.textTheme.bodyText2!,
                                       fontWeight: 500,
                                       color: themeData.colorScheme.onPrimary)),
                             )
@@ -182,7 +184,7 @@ class _EstimatesState extends State<Estimates> {
                           children: <Widget>[
                             Text("Delete",
                                 style: AppTheme.getTextStyle(
-                                    themeData.textTheme.bodyText2,
+                                    themeData.textTheme.bodyText2!,
                                     fontWeight: 500,
                                     color: customAppTheme.onError)),
                             Padding(
@@ -247,7 +249,7 @@ class _EstimatesState extends State<Estimates> {
                                             Text(
                                               _estimateList[index].name,
                                               style: AppTheme.getTextStyle(
-                                                themeData.textTheme.bodyText1,
+                                                themeData.textTheme.bodyText1!,
                                                 color: themeData
                                                     .colorScheme.onBackground,
                                                 fontWeight: 500,
@@ -256,7 +258,8 @@ class _EstimatesState extends State<Estimates> {
                                             Text(
                                               _estimateList[index].amount,
                                               style: AppTheme.getTextStyle(
-                                                  themeData.textTheme.bodyText1,
+                                                  themeData
+                                                      .textTheme.bodyText1!,
                                                   color: themeData
                                                       .colorScheme.onBackground,
                                                   fontWeight: 700),
@@ -274,7 +277,7 @@ class _EstimatesState extends State<Estimates> {
                                             Text(
                                               _estimateList[index].no,
                                               style: AppTheme.getTextStyle(
-                                                  themeData.textTheme.caption,
+                                                  themeData.textTheme.caption!,
                                                   color: themeData
                                                       .colorScheme.onBackground,
                                                   xMuted: true),
@@ -282,7 +285,7 @@ class _EstimatesState extends State<Estimates> {
                                             Text(
                                               _estimateList[index].date,
                                               style: AppTheme.getTextStyle(
-                                                  themeData.textTheme.caption,
+                                                  themeData.textTheme.caption!,
                                                   color: themeData
                                                       .colorScheme.onBackground,
                                                   xMuted: true),
@@ -312,7 +315,7 @@ class _EstimatesState extends State<Estimates> {
       new SnackBar(
         content: new Text(
           message,
-          style: themeData.textTheme.subtitle2
+          style: themeData.textTheme.subtitle2!
               .merge(TextStyle(color: themeData.colorScheme.onPrimary)),
         ),
         backgroundColor: themeData.colorScheme.primary,
@@ -337,19 +340,19 @@ class _SortBottomSheetState extends State<SortBottomSheet> {
       decoration: BoxDecoration(
           color: themeData.backgroundColor,
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(MySize.size16),
-              topRight: Radius.circular(MySize.size16))),
+              topLeft: Radius.circular(MySize.size16!),
+              topRight: Radius.circular(MySize.size16!))),
       child: Padding(
         padding: EdgeInsets.only(
-            top: MySize.size16,
-            left: MySize.size24,
-            right: MySize.size24,
-            bottom: MySize.size16),
+            top: MySize.size16!,
+            left: MySize.size24!,
+            right: MySize.size24!,
+            bottom: MySize.size16!),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(top: MySize.size8),
+              margin: EdgeInsets.only(top: MySize.size8!),
               child: Column(
                 children: <Widget>[
                   InkWell(
@@ -373,11 +376,11 @@ class _SortBottomSheetState extends State<SortBottomSheet> {
                         ),
                         Text("Date - ",
                             style: AppTheme.getTextStyle(
-                                themeData.textTheme.subtitle2,
+                                themeData.textTheme.subtitle2!,
                                 fontWeight: 600)),
                         Text("Newest to Oldest",
                             style: AppTheme.getTextStyle(
-                                themeData.textTheme.subtitle2,
+                                themeData.textTheme.subtitle2!,
                                 fontWeight: 500)),
                       ],
                     ),
@@ -403,11 +406,11 @@ class _SortBottomSheetState extends State<SortBottomSheet> {
                         ),
                         Text("Date - ",
                             style: AppTheme.getTextStyle(
-                                themeData.textTheme.subtitle2,
+                                themeData.textTheme.subtitle2!,
                                 fontWeight: 600)),
                         Text("Oldest to Newest",
                             style: AppTheme.getTextStyle(
-                                themeData.textTheme.subtitle2,
+                                themeData.textTheme.subtitle2!,
                                 fontWeight: 500)),
                       ],
                     ),

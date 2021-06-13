@@ -1,59 +1,60 @@
 import 'package:flutter/material.dart';
 
+
 class MySize {
-  static MediaQueryData _mediaQueryData;
-  static double screenWidth;
-  static double screenHeight;
-  static double safeWidth;
-  static double safeHeight;
-  static double scaleFactorWidth;
-  static double scaleFactorHeight;
+  static late MediaQueryData _mediaQueryData;
+  static late double screenWidth;
+  static late double screenHeight;
+  static double? safeWidth;
+  static double? safeHeight;
+  static late double scaleFactorWidth;
+  static late double scaleFactorHeight;
 
   //Custom sizes
-  static double size0;
-  static double size2;
-  static double size3;
-  static double size4;
-  static double size5;
-  static double size6;
-  static double size7;
-  static double size8;
-  static double size10;
-  static double size12;
-  static double size14;
-  static double size16;
-  static double size18;
-  static double size20;
-  static double size22;
-  static double size24;
-  static double size26;
-  static double size28;
-  static double size30;
-  static double size32;
-  static double size34;
-  static double size36;
-  static double size38;
-  static double size40;
-  static double size42;
-  static double size44;
-  static double size48;
-  static double size50;
-  static double size52;
-  static double size54;
-  static double size56;
-  static double size60;
-  static double size64;
-  static double size68;
-  static double size72;
-  static double size76;
-  static double size80;
-  static double size90;
-  static double size96;
-  static double size100;
-  static double size120;
-  static double size140;
-  static double size160;
-  static double size180;
+  static double? size0;
+  static late double size2;
+  static late double size3;
+  static double? size4;
+  static double? size5;
+  static double? size6;
+  static late double size7;
+  static double? size8;
+  static double? size10;
+  static double? size12;
+  static double? size14;
+  static double? size16;
+  static double? size18;
+  static double? size20;
+  static double? size22;
+  static double? size24;
+  static double? size26;
+  static double? size28;
+  static double? size30;
+  static double? size32;
+  static late double size34;
+  static double? size36;
+  static double? size38;
+  static double? size40;
+  static double? size42;
+  static double? size44;
+  static double? size48;
+  static double? size50;
+  static double? size52;
+  static double? size54;
+  static double? size56;
+  static double? size60;
+  static double? size64;
+  static double? size68;
+  static double? size72;
+  static double? size76;
+  static double? size80;
+  static double? size90;
+  static late double size96;
+  static double? size100;
+  static double? size120;
+  static double? size140;
+  static double? size160;
+  static double? size180;
 
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
@@ -67,12 +68,12 @@ class MySize {
     safeHeight = (screenHeight - _safeAreaHeight);
 
     //Scale factor for responsive UI
-    scaleFactorHeight = (safeHeight / 820);
+    scaleFactorHeight = (safeHeight! / 820);
     if (scaleFactorHeight < 1) {
       double diff = (1 - scaleFactorHeight) * (1 - scaleFactorHeight);
       scaleFactorHeight += diff;
     }
-    scaleFactorWidth = safeWidth / 392;
+    scaleFactorWidth = safeWidth! / 392;
     if (scaleFactorWidth < 1) {
       double diff = (1 - scaleFactorWidth) * (1 - scaleFactorWidth);
       scaleFactorWidth += diff;
@@ -137,12 +138,11 @@ class MySize {
 class Spacing {
   static EdgeInsetsGeometry zero = EdgeInsets.zero;
 
-  static EdgeInsetsGeometry only(
-      {double top = 0,
-      double right = 0,
-      double bottom = 0,
-      double left = 0,
-      bool withResponsive = true}) {
+  static EdgeInsetsGeometry only({double top = 0,
+    double right = 0,
+    double bottom = 0,
+    double left = 0,
+    bool withResponsive = true}) {
     if (withResponsive) {
       return EdgeInsets.only(
           left: MySize.getScaledSizeHeight(left),
@@ -155,8 +155,8 @@ class Spacing {
     }
   }
 
-  static EdgeInsetsGeometry fromLTRB(
-      double left, double top, double right, double bottom,
+  static EdgeInsetsGeometry fromLTRB(double left, double top, double right,
+      double bottom,
       {bool withResponsive = true}) {
     return Spacing.only(
         bottom: bottom,
@@ -174,6 +174,7 @@ class Spacing {
         left: spacing,
         withResponsive: withResponsive);
   }
+
 
   static EdgeInsetsGeometry left(double spacing, {bool withResponsive = true}) {
     return Spacing.only(left: spacing, withResponsive: withResponsive);
@@ -205,15 +206,91 @@ class Spacing {
         top: spacing, bottom: spacing, withResponsive: withResponsive);
   }
 
-  static EdgeInsetsGeometry symmetric(
-      {double vertical = 0,
-      double horizontal = 0,
-      bool withResponsive = true}) {
-    return Spacing.only(
-        top: vertical,
+  static EdgeInsetsGeometry symmetric({double vertical=0, double horizontal=0,
+    bool withResponsive = true}) {
+    return Spacing.only(top: vertical,
         right: horizontal,
         left: horizontal,
         bottom: vertical,
         withResponsive: withResponsive);
   }
+
+
+  static x(double spacing) {
+    return Spacing.only(
+        left: spacing, right: spacing);
+  }
+  static xy(double xSpacing,double ySpacing) {
+    return Spacing.only(
+        left: xSpacing, right: xSpacing,top: ySpacing,bottom: ySpacing);
+  }
+
+  static y(double spacing) {
+    return Spacing.only(
+        top: spacing, bottom: spacing);
+  }
+
+  static SizedBox width(double width) {
+    return SizedBox(width: width,);
+  }
+
+  static SizedBox height(double height) {
+    return SizedBox(height: height,);
+  }
+
+
+
+
+
+}
+
+
+
+class Space{
+
+  Space();
+
+
+  static Widget height(double space){
+    return SizedBox(height: MySize.getScaledSizeHeight(space),);
+  }
+
+  static Widget width(double space){
+    return SizedBox(width: MySize.getScaledSizeHeight(space),);
+  }
+
+}
+
+enum ShapeTypeFor{
+  container,
+  button
+}
+
+class Shape{
+
+  static dynamic circular(double radius,{ShapeTypeFor shapeTypeFor=ShapeTypeFor.container}){
+    BorderRadius borderRadius = BorderRadius.all(Radius.circular(MySize.getScaledSizeHeight(radius)));
+
+    switch(shapeTypeFor) {
+      case ShapeTypeFor.container:
+        return borderRadius;
+      case ShapeTypeFor.button:
+        return RoundedRectangleBorder(
+            borderRadius: borderRadius);
+    }
+  }
+
+  static dynamic circularTop(double radius,{ShapeTypeFor shapeTypeFor=ShapeTypeFor.container}){
+
+    BorderRadius borderRadius = BorderRadius.only(topLeft: Radius.circular(MySize.getScaledSizeHeight(radius)),topRight: Radius.circular(MySize.getScaledSizeHeight(radius)));
+    switch(shapeTypeFor) {
+      case ShapeTypeFor.container:
+        return borderRadius;
+        break;
+      case ShapeTypeFor.button:
+        return RoundedRectangleBorder(
+            borderRadius: borderRadius);
+    }
+  }
+
 }

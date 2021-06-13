@@ -10,7 +10,7 @@ class SinglePage extends StatelessWidget {
   final double percentVisible;
 
   SinglePage({
-    this.viewModel,
+    required this.viewModel,
     this.percentVisible = 1.0,
   });
 

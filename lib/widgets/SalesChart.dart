@@ -2,17 +2,17 @@ import 'package:charts_flutter/flutter.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart' as Material;
 import 'package:flutter/material.dart';
-import 'package:invoice/AppTheme.dart';
+import 'package:invoice/core/theme.dart';
 
 class SalesChart extends StatelessWidget {
-  final List<charts.Series> seriesList;
+  final List<charts.Series<OrdinalSales, String>> seriesList;
   final bool animate;
 
-  SalesChart(this.seriesList, {this.animate});
+  SalesChart(this.seriesList, {required this.animate});
 
   factory SalesChart.withSampleData() {
     return new SalesChart(
-      _createSampleData(),
+      _createSampleData() ,
       animate: true,
     );
   }

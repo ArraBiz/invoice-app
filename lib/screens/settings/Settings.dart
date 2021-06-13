@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:invoice/AppTheme.dart';
-import 'package:invoice/SizeConfig.dart';
+import 'package:invoice/core/theme.dart';
+import 'package:invoice/core/size_config.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class Settings extends StatefulWidget {
+  const Settings({Key? key}) : super(key: key);
+
   @override
   _SettingsState createState() => _SettingsState();
 }
 
 class _SettingsState extends State<Settings> {
-  ThemeData themeData;
-  CustomAppTheme customAppTheme;
+  late ThemeData themeData;
+  late CustomAppTheme customAppTheme;
 
   Widget build(BuildContext context) {
     themeData = Theme.of(context);
@@ -31,7 +33,7 @@ class _SettingsState extends State<Settings> {
           centerTitle: true,
           title: Text("Settings",
               style: AppTheme.getTextStyle(
-                  themeData.appBarTheme.textTheme.headline6,
+                  themeData.appBarTheme.textTheme!.headline6!,
                   fontWeight: 600)),
         ),
         body: ListView(
@@ -39,7 +41,7 @@ class _SettingsState extends State<Settings> {
           children: <Widget>[
             Container(
               padding:
-                  EdgeInsets.symmetric(vertical: MySize.size8, horizontal: 0),
+                  EdgeInsets.symmetric(vertical: MySize.size8!, horizontal: 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
@@ -50,10 +52,10 @@ class _SettingsState extends State<Settings> {
                   ),
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.only(left: MySize.size16),
+                      margin: EdgeInsets.only(left: MySize.size16!),
                       child: Text("Security",
                           style: AppTheme.getTextStyle(
-                              themeData.textTheme.subtitle1,
+                              themeData.textTheme.subtitle1!,
                               fontWeight: 600)),
                     ),
                   ),
@@ -69,7 +71,7 @@ class _SettingsState extends State<Settings> {
             ),
             Container(
               padding:
-                  EdgeInsets.symmetric(vertical: MySize.size8, horizontal: 0),
+                  EdgeInsets.symmetric(vertical: MySize.size8!, horizontal: 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
@@ -80,10 +82,10 @@ class _SettingsState extends State<Settings> {
                   ),
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.only(left: MySize.size16),
+                      margin: EdgeInsets.only(left: MySize.size16!),
                       child: Text("Help \& Support",
                           style: AppTheme.getTextStyle(
-                              themeData.textTheme.subtitle1,
+                              themeData.textTheme.subtitle1!,
                               fontWeight: 600)),
                     ),
                   ),
@@ -100,7 +102,7 @@ class _SettingsState extends State<Settings> {
             ),
             Container(
               padding:
-                  EdgeInsets.symmetric(vertical: MySize.size8, horizontal: 0),
+                  EdgeInsets.symmetric(vertical: MySize.size8!, horizontal: 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
@@ -110,10 +112,10 @@ class _SettingsState extends State<Settings> {
                   ),
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.only(left: MySize.size16),
+                      margin: EdgeInsets.only(left: MySize.size16!),
                       child: Text("About",
                           style: AppTheme.getTextStyle(
-                              themeData.textTheme.subtitle1,
+                              themeData.textTheme.subtitle1!,
                               fontWeight: 600)),
                     ),
                   ),

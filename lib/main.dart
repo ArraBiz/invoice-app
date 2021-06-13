@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:invoice/AppTheme.dart';
-import 'package:invoice/screens/Onboarding.dart';
+
+import 'app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,17 +10,6 @@ void main() {
       statusBarColor: Color(0xff5da695), statusBarBrightness: Brightness.dark));
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
-    runApp(ProviderScope(child: MyApp()));
+    runApp(MyApp());
   });
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.getTheme(),
-      home: Onboarding(),
-    );
-  }
 }

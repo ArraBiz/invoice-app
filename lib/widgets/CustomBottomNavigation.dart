@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../AppTheme.dart';
-import '../SizeConfig.dart';
+import '../core/theme.dart';
+import '../core/size_config.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
   final int selectedIndex;
   final double iconSize;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final bool showElevation;
   final Duration animationDuration;
   final List<CustomBottomNavigationBarItem> items;
@@ -17,10 +17,10 @@ class CustomBottomNavigation extends StatelessWidget {
   final double containerHeight;
   final Curve curve;
   final Color selectedItemOverlayColor;
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   CustomBottomNavigation({
-    Key key,
+    Key? key,
     this.selectedIndex = 0,
     this.showElevation = true,
     this.iconSize = 24,
@@ -29,8 +29,8 @@ class CustomBottomNavigation extends StatelessWidget {
     this.containerHeight = 56,
     this.animationDuration = const Duration(milliseconds: 270),
     this.mainAxisAlignment = MainAxisAlignment.spaceBetween,
-    @required this.items,
-    @required this.onItemSelected,
+    required this.items,
+    required this.onItemSelected,
     this.curve = Curves.linear,
     this.selectedItemOverlayColor = const Color(0xffffffff),
     this.textStyle,
@@ -56,7 +56,7 @@ class CustomBottomNavigation extends StatelessWidget {
           if (showElevation)
             BoxShadow(
               color: Colors.black.withAlpha(16),
-              blurRadius: MySize.size8,
+              blurRadius: MySize.size8!,
             ),
         ],
       ),
@@ -75,7 +75,7 @@ class CustomBottomNavigation extends StatelessWidget {
                   item: item,
                   iconSize: iconSize,
                   isSelected: index == selectedIndex,
-                  backgroundColor: bgColor,
+                  backgroundColor: bgColor!,
                   itemCornerRadius: itemCornerRadius,
                   animationDuration: animationDuration,
                   curve: curve,
@@ -101,15 +101,15 @@ class _ItemWidget extends StatelessWidget {
   final Color selectedOverlayColor;
 
   const _ItemWidget({
-    Key key,
-    @required this.item,
-    @required this.isSelected,
-    @required this.backgroundColor,
-    @required this.animationDuration,
-    @required this.itemCornerRadius,
-    @required this.iconSize,
+    Key? key,
+    required this.item,
+    required this.isSelected,
+    required this.backgroundColor,
+    required this.animationDuration,
+    required this.itemCornerRadius,
+    required this.iconSize,
     this.curve = Curves.linear,
-    @required this.selectedOverlayColor,
+    required this.selectedOverlayColor,
   })  : assert(isSelected != null),
         assert(item != null),
         assert(backgroundColor != null),
@@ -168,7 +168,7 @@ class _ItemWidget extends StatelessWidget {
                       child: Text(
                         item.title,
                         style: AppTheme.getTextStyle(
-                            themeData.textTheme.bodyText2,
+                            themeData.textTheme.bodyText2!,
                             color: item.activeColor,
                             fontWeight: 700,letterSpacing: 0),
                         maxLines: 1,
@@ -190,15 +190,15 @@ class CustomBottomNavigationBarItem {
   final String title;
   final Color activeColor;
   final Icon activeIcon;
-  final Color inactiveColor;
-  final TextAlign textAlign;
+  final Color? inactiveColor;
+  final TextAlign? textAlign;
 
   CustomBottomNavigationBarItem({
-    @required this.icon,
-    @required this.title,
+    required this.icon,
+    required this.title,
     this.activeColor = Colors.blue,
     this.textAlign,
-    this.activeIcon,
+    required this.activeIcon,
     this.inactiveColor,
   }) {
     assert(icon != null);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:invoice/AppTheme.dart';
-import 'package:invoice/SizeConfig.dart';
+import 'package:invoice/core/theme.dart';
+import 'package:invoice/core/size_config.dart';
 import 'package:invoice/screens/profile/Profile.dart';
 import 'package:invoice/screens/settings/Settings.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -10,8 +10,8 @@ class CustomAppBar extends StatelessWidget {
   final String title;
 
   const CustomAppBar({
-    Key key,
-    @required this.title,
+    Key? key,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -31,7 +31,7 @@ class CustomAppBar extends StatelessWidget {
               children: [
                 Text(
                   'Today $formattedNow',
-                  style: AppTheme.getTextStyle(themeData.textTheme.bodyText2,
+                  style: AppTheme.getTextStyle(themeData.textTheme.bodyText2!,
                       fontWeight: 400,
                       letterSpacing: 0,
                       color: themeData.colorScheme.onBackground),
@@ -39,7 +39,7 @@ class CustomAppBar extends StatelessWidget {
                 Container(
                   child: Text(
                     this.title,
-                    style: AppTheme.getTextStyle(themeData.textTheme.headline5,
+                    style: AppTheme.getTextStyle(themeData.textTheme.headline5!,
                         fontSize: 24,
                         fontWeight: 700,
                         letterSpacing: -0.3,
@@ -60,11 +60,11 @@ class CustomAppBar extends StatelessWidget {
               padding: Spacing.all(10),
               decoration: BoxDecoration(
                   color: customAppTheme.bgLayer3,
-                  borderRadius: BorderRadius.all(Radius.circular(MySize.size8)),
+                  borderRadius: BorderRadius.all(Radius.circular(MySize.size8!)),
                   boxShadow: [
                     BoxShadow(
                         color: customAppTheme.shadowColor,
-                        blurRadius: MySize.size4)
+                        blurRadius: MySize.size4!)
                   ]),
               child: Icon(MdiIcons.briefcaseAccountOutline,
                   color: themeData.colorScheme.primary),
@@ -84,11 +84,11 @@ class CustomAppBar extends StatelessWidget {
               padding: Spacing.all(10),
               decoration: BoxDecoration(
                   color: customAppTheme.bgLayer3,
-                  borderRadius: BorderRadius.all(Radius.circular(MySize.size8)),
+                  borderRadius: BorderRadius.all(Radius.circular(MySize.size8!)),
                   boxShadow: [
                     BoxShadow(
                         color: customAppTheme.shadowColor,
-                        blurRadius: MySize.size4)
+                        blurRadius: MySize.size4!)
                   ]),
               child: Icon(MdiIcons.cogOutline,
                   color: themeData.colorScheme.primary),

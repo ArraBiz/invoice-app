@@ -13,7 +13,7 @@ class PagerIndicator extends StatelessWidget {
   final PagerIndicatorViewModel viewModel;
 
   PagerIndicator({
-    this.viewModel,
+    required this.viewModel,
   });
 
   @override
@@ -146,7 +146,7 @@ class PagerIndicatorViewModel {
 class PageBubble extends StatelessWidget {
   final PageBubbleViewModel viewModel;
 
-  PageBubble({this.viewModel});
+  PageBubble({required this.viewModel});
 
   @override
   Widget build(BuildContext context) {

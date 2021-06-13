@@ -3,7 +3,7 @@ description: Making your paperwork paperless
 publish_to: 'none'
 version: 1.0.0+1
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -13,11 +13,16 @@ dependencies:
   google_fonts: ^2.1.0
   material_design_icons_flutter: ^4.0.5955
   charts_flutter: ^0.10.0
+  objectbox: ^0.15.0
+  objectbox_flutter_libs: ^0.15.0
+  path_provider: ^2.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.9.0
+  build_runner: ^2.0.4
+  objectbox_generator: ^0.15.0
 
 flutter_icons:
   android: "launcher_icon"
@@ -34,6 +39,7 @@ flutter:
     - assets/illustration/01.png
     - assets/illustration/02.png
     - assets/illustration/03.png
+    - assets/illustration/empty-box.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

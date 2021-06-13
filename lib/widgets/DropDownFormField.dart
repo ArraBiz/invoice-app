@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:invoice/SizeConfig.dart';
+import 'package:invoice/core/size_config.dart';
 
-import '../AppTheme.dart';
+import '../core/theme.dart';
 
 class DropDownFormField extends FormField<dynamic> {
   final String titleText;
@@ -9,17 +9,17 @@ class DropDownFormField extends FormField<dynamic> {
   final bool required;
   final String errorText;
   final dynamic value;
-  final List dataSource;
-  final String textField;
-  final String valueField;
+  final List? dataSource;
+  final String? textField;
+  final String? valueField;
   final Function onChanged;
   final bool filled;
   final EdgeInsets contentPadding;
 
   DropDownFormField(
-      {FormFieldSetter<dynamic> onSaved,
-      FormFieldValidator<dynamic> validator,
-      AutovalidateMode autovalidateMode,
+      {FormFieldSetter<dynamic>? onSaved,
+      FormFieldValidator<dynamic>? validator,
+      AutovalidateMode? autovalidateMode,
       this.titleText = 'Title',
       this.hintText = 'Country',
       this.required = false,
@@ -28,7 +28,7 @@ class DropDownFormField extends FormField<dynamic> {
       this.dataSource,
       this.textField,
       this.valueField,
-      this.onChanged,
+      required this.onChanged,
       this.filled = true,
       this.contentPadding = const EdgeInsets.all(0)})
       : super(
@@ -43,17 +43,17 @@ class DropDownFormField extends FormField<dynamic> {
                 hintText: "Company Name",
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
-                      Radius.circular(MySize.size8),
+                      Radius.circular(MySize.size8!),
                     ),
                     borderSide: BorderSide.none),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
-                      Radius.circular(MySize.size8),
+                      Radius.circular(MySize.size8!),
                     ),
                     borderSide: BorderSide.none),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
-                      Radius.circular(MySize.size8),
+                      Radius.circular(MySize.size8!),
                     ),
                     borderSide: BorderSide.none),
                 isDense: true,
@@ -68,7 +68,7 @@ class DropDownFormField extends FormField<dynamic> {
                     hint: Text(
                       hintText,
                       style: AppTheme.getTextStyle(
-                          themeData.textTheme.subtitle2,
+                          themeData.textTheme.subtitle2!,
                           letterSpacing: 0.1,
                           color: themeData.colorScheme.onBackground,
                           fontWeight: 500),
@@ -78,7 +78,7 @@ class DropDownFormField extends FormField<dynamic> {
                       state.didChange(newValue);
                       onChanged(newValue);
                     },
-                    items: dataSource.map((item) {
+                    items: dataSource?.map((item) {
                       return DropdownMenuItem<dynamic>(
                         value: item[valueField],
                         child: Text(item[textField],

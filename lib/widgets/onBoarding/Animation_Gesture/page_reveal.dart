@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 
 class PageReveal extends StatelessWidget {
 
-  final double revealPercent;
-  final Widget child;
+  final double? revealPercent;
+  final Widget? child;
 
   PageReveal({
     this.revealPercent,
@@ -20,7 +20,7 @@ class PageReveal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipOval(
-      clipper: new CircleRevealClipper(revealPercent),
+      clipper: new CircleRevealClipper(revealPercent!),
       child: child,
     );
   }

@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:invoice/AppTheme.dart';
-import 'package:invoice/SizeConfig.dart';
+import 'package:invoice/core/theme.dart';
+import 'package:invoice/core/size_config.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class Profile extends StatefulWidget {
+  const Profile({Key? key}) : super(key: key);
+
   @override
   _ProfileState createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
-  ThemeData themeData;
-  CustomAppTheme customAppTheme;
+  late ThemeData themeData;
+  late CustomAppTheme customAppTheme;
 
   Widget build(BuildContext context) {
     themeData = Theme.of(context);
@@ -31,16 +33,16 @@ class _ProfileState extends State<Profile> {
           centerTitle: true,
           title: Text("Company Information",
               style: AppTheme.getTextStyle(
-                  themeData.appBarTheme.textTheme.headline6,
+                  themeData.appBarTheme.textTheme!.headline6!,
                   fontWeight: 600)),
         ),
         body: ListView(
-          padding: EdgeInsets.all(MySize.size16),
+          padding: EdgeInsets.all(MySize.size16!),
           children: <Widget>[
             Container(
               margin: EdgeInsets.only(bottom: 0),
               child: Text("Personal information",
-                  style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
+                  style: AppTheme.getTextStyle(themeData.textTheme.bodyText1!,
                       fontWeight: 600, letterSpacing: 0)),
             ),
             Container(
@@ -48,17 +50,17 @@ class _ProfileState extends State<Profile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(top: MySize.size16),
+                    margin: EdgeInsets.only(top: MySize.size16!),
                     child: TextFormField(
                       style: AppTheme.getTextStyle(
-                          themeData.textTheme.subtitle2,
+                          themeData.textTheme.subtitle2!,
                           letterSpacing: 0,
                           color: themeData.colorScheme.onBackground,
                           fontWeight: 500),
                       decoration: InputDecoration(
                         hintText: "Email",
                         hintStyle: AppTheme.getTextStyle(
-                            themeData.textTheme.subtitle2,
+                            themeData.textTheme.subtitle2!,
                             letterSpacing: 0,
                             color: themeData.colorScheme.onBackground,
                             fontWeight: 500),
@@ -91,17 +93,17 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: MySize.size12),
+                    margin: EdgeInsets.only(top: MySize.size12!),
                     child: TextFormField(
                       style: AppTheme.getTextStyle(
-                          themeData.textTheme.subtitle2,
+                          themeData.textTheme.subtitle2!,
                           letterSpacing: 0,
                           color: themeData.colorScheme.onBackground,
                           fontWeight: 500),
                       decoration: InputDecoration(
                         hintText: "Number",
                         hintStyle: AppTheme.getTextStyle(
-                            themeData.textTheme.subtitle2,
+                            themeData.textTheme.subtitle2!,
                             letterSpacing: 0,
                             color: themeData.colorScheme.onBackground,
                             fontWeight: 500),
@@ -136,9 +138,9 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: MySize.size24, bottom: 0),
+              margin: EdgeInsets.only(top: MySize.size24!, bottom: 0),
               child: Text("Company information",
-                  style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
+                  style: AppTheme.getTextStyle(themeData.textTheme.bodyText1!,
                       fontWeight: 600, letterSpacing: 0)),
             ),
             Container(
@@ -146,17 +148,17 @@ class _ProfileState extends State<Profile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(top: MySize.size16),
+                    margin: EdgeInsets.only(top: MySize.size16!),
                     child: TextFormField(
                       style: AppTheme.getTextStyle(
-                          themeData.textTheme.subtitle2,
+                          themeData.textTheme.subtitle2!,
                           letterSpacing: 0,
                           color: themeData.colorScheme.onBackground,
                           fontWeight: 500),
                       decoration: InputDecoration(
                         hintText: "Name",
                         hintStyle: AppTheme.getTextStyle(
-                            themeData.textTheme.subtitle2,
+                            themeData.textTheme.subtitle2!,
                             letterSpacing: 0,
                             color: themeData.colorScheme.onBackground,
                             fontWeight: 500),
@@ -188,17 +190,17 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: MySize.size12),
+                    margin: EdgeInsets.only(top: MySize.size12!),
                     child: TextFormField(
                       style: AppTheme.getTextStyle(
-                          themeData.textTheme.subtitle2,
+                          themeData.textTheme.subtitle2!,
                           letterSpacing: 0,
                           color: themeData.colorScheme.onBackground,
                           fontWeight: 500),
                       decoration: InputDecoration(
                         hintText: "Job Title",
                         hintStyle: AppTheme.getTextStyle(
-                            themeData.textTheme.subtitle2,
+                            themeData.textTheme.subtitle2!,
                             letterSpacing: 0,
                             color: themeData.colorScheme.onBackground,
                             fontWeight: 500),
@@ -230,17 +232,17 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: MySize.size12),
+                    margin: EdgeInsets.only(top: MySize.size12!),
                     child: TextFormField(
                       style: AppTheme.getTextStyle(
-                          themeData.textTheme.subtitle2,
+                          themeData.textTheme.subtitle2!,
                           letterSpacing: 0,
                           color: themeData.colorScheme.onBackground,
                           fontWeight: 500),
                       decoration: InputDecoration(
                         hintText: "Website",
                         hintStyle: AppTheme.getTextStyle(
-                            themeData.textTheme.subtitle2,
+                            themeData.textTheme.subtitle2!,
                             letterSpacing: 0,
                             color: themeData.colorScheme.onBackground,
                             fontWeight: 500),
@@ -275,12 +277,12 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: MySize.size24),
+              margin: EdgeInsets.only(top: MySize.size24!),
               child: Center(
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius:
-                        BorderRadius.all(Radius.circular(MySize.size4)),
+                        BorderRadius.all(Radius.circular(MySize.size4!)),
                     boxShadow: [
                       BoxShadow(
                         color: themeData.colorScheme.primary.withAlpha(28),
@@ -296,7 +298,7 @@ class _ProfileState extends State<Profile> {
                     child: Text(
                       "SAVE",
                       style: AppTheme.getTextStyle(
-                              themeData.textTheme.bodyText2,
+                              themeData.textTheme.bodyText2!,
                               fontWeight: 600)
                           .merge(TextStyle(
                               color: themeData.colorScheme.onPrimary)),

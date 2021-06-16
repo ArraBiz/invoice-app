@@ -39,7 +39,7 @@ flutter:
     - assets/illustration/01.png
     - assets/illustration/02.png
     - assets/illustration/03.png
-    - assets/illustration/empty-box.png
+    - assets/illustration/db-error.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

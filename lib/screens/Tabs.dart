@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:invoice/core/theme.dart';
 import 'package:invoice/core/size_config.dart';
-import 'package:invoice/screens/customers/customer_create.dart';
+import 'package:invoice/screens/customers/customer_form.dart';
 import 'package:invoice/screens/products/Products.dart';
 import 'package:invoice/widgets/CustomBottomNavigation.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';

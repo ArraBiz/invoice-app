@@ -4,14 +4,14 @@ import 'package:objectbox/objectbox.dart';
 class Customer {
   int id;
   String name;
-  String email;
-  String mobile;
-  String address;
+  String? email;
+  String mobile; //TODO: make it unique
+  String? address;
 
   Customer(
       {this.id = 0,
       required this.name,
-      required this.email,
+      this.email,
       required this.mobile,
-      required this.address});
+      this.address});
 }

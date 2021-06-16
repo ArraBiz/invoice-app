@@ -1,6 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:invoice/application/store_notifier.dart';
 import 'package:invoice/repositories/database_repository.dart';
-import 'package:objectbox/objectbox.dart';
 
-final fetchStoreProvider = FutureProvider((ref) async => await DatabaseRepository().fetchStore());
-final storeProvider = StateProvider((ref) => ref.read(fetchStoreProvider).data?.value);
+final databaseRepositoryProvider =
+    Provider<DatabaseRepository>((ref) => DatabaseRepository());
+
+final storeNotifierProvider = StateNotifierProvider(
+    (ref) => StoreNotifier(ref.watch(databaseRepositoryProvider)));

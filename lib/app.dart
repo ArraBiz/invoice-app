@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:invoice/application/store_notifier.dart';
+import 'package:invoice/core/size_config.dart';
 import 'package:invoice/providers.dart';
-import 'package:invoice/repositories/database_repository.dart';
-import 'package:objectbox/objectbox.dart';
 
 import 'core/theme.dart';
 import 'screens/Onboarding.dart';
@@ -35,39 +35,54 @@ class Root extends StatefulWidget {
 }
 
 class _RootState extends State<Root> {
-  late Store _store;
-  bool _loading = true;
-
   @override
   void initState() {
     super.initState();
-    DatabaseRepository().fetchStore().then((store) {
-      setState(() {
-        _store = store;
-        _loading = false;
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    context.read(storeProvider).state?.close();
+    context.read(storeNotifierProvider.notifier).getStore();
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: DatabaseRepository().fetchStore(),
-        builder: (context, AsyncSnapshot<Store> snapshot) {
-          if (snapshot.hasData) {
-            if (snapshot.data != null) {
-              context.read(storeProvider).state = snapshot.data!;
-              return Onboarding();
-            }
+    return ProviderListener(
+      provider: storeNotifierProvider,
+      onChange: (context, state) {
+        if (state is StoreError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.message),
+            ),
+          );
+        }
+      },
+      child: Consumer(
+        builder: (context, watch, child) {
+          final state = watch(storeNotifierProvider);
+          if (state is StoreInitial || state is StoreLoading) {
+            return Center(child: CircularProgressIndicator());
+          } else if (state is StoreLoaded) {
+            return Onboarding();
+          } else {
+            return Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Container(
+                    child: Image(
+                        image: AssetImage(
+                          './assets/illustration/db-error.png',
+                        ),
+                        height: MySize.safeWidth! * 0.5,
+                        width: MySize.safeWidth! * 0.5),
+                  ),
+                  Container(
+                    child: Text("Error establishing a database connection"),
+                  ),
+                ],
+              ),
+            );
           }
-
-          return Scaffold(body: Center(child: CircularProgressIndicator()));
-        });
+        },
+      ),
+    );
   }
 }

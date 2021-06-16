@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:invoice/core/constants.dart';
 import 'package:invoice/core/size_config.dart';
 import 'package:invoice/core/theme.dart';
 import 'package:invoice/models/customer.dart';
 import 'package:invoice/providers.dart';
 import 'package:invoice/repositories/customer_repository.dart';
-import 'package:invoice/repositories/database_repository.dart';
-import 'package:invoice/screens/customers/CustomerView.dart';
 import 'package:invoice/widgets/CustomAppBar.dart';
 import 'package:invoice/widgets/empty_list.dart';
 import 'package:invoice/widgets/search_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:objectbox/objectbox.dart';
-import 'package:path/path.dart';
 
-import '../../objectbox.g.dart';
-import 'customer_create.dart';
+import 'customer_form.dart';
 
 class CustomerList extends StatefulWidget {
   const CustomerList({Key? key}) : super(key: key);
@@ -24,25 +21,35 @@ class CustomerList extends StatefulWidget {
   _CustomerListState createState() => _CustomerListState();
 }
 
-class _CustomerListState extends State<CustomerList> {
-  late Store _store;
+class _CustomerListState extends State<CustomerList>
+    with AutomaticKeepAliveClientMixin<CustomerList> {
   late ThemeData themeData;
   late CustomAppTheme customAppTheme;
+  late Stream<List<Customer>> _stream;
+  late Store _store;
+  bool _loading = true;
 
   @override
   void initState() {
     super.initState();
     themeData = AppTheme.getTheme();
     customAppTheme = AppTheme.getCustomAppTheme();
-    // DatabaseRepository().fetchStore().then((store) {
-    //   final customerBox = store.box<Customer>();
-    //   customerBox.removeAll();
-    // });
+    final store = context.read(storeNotifierProvider).state;
+    final stream = CustomerRepository().getAll(store);
+
+    setState(() {
+      _stream = stream;
+      _store = store;
+      _loading = false;
+    });
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
-    _store = context.read(storeProvider).state!;
+    super.build(context);
     return Scaffold(
       body: Container(
         padding: Spacing.only(top: 48),
@@ -54,104 +61,58 @@ class _CustomerListState extends State<CustomerList> {
               placeholder: "Search customers",
             ),
             Expanded(
-              child: StreamBuilder<List<Customer>>(
-                      stream: CustomerRepository().getAll(_store),
+              child: !_loading
+                  ? StreamBuilder<List<Customer>>(
+                      stream: _stream,
                       builder: (context, snapshot) {
-                        print(snapshot.connectionState);
-                        if (snapshot.connectionState ==
-                            ConnectionState.active) {
-                          if (snapshot.hasError) {
-                            print(snapshot.error);
+                        if (snapshot.hasData) {
+                          if (snapshot.data!.isEmpty) {
+                            return EmptyList(message: "No Customers");
                           }
-
-                          if (snapshot.hasData) {
-                            if (snapshot.data!.isEmpty) {
-                              return EmptyList(
-                                  message: "No customers found",
-                                  themeData: themeData);
-                            }
-                            return ListView.builder(
-                              padding: EdgeInsets.all(0),
-                              itemCount: snapshot.data?.length,
-                              itemBuilder: (context, index) {
-                                final customer = snapshot.data![index];
-                                return Dismissible(
-                                  background: Container(
-                                    color: themeData.primaryColor,
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 20),
-                                    alignment: AlignmentDirectional.centerStart,
-                                    child: Row(
-                                      children: <Widget>[
-                                        Icon(
-                                          MdiIcons.accountEditOutline,
-                                          color:
-                                              themeData.colorScheme.onPrimary,
+                          return ListView.builder(
+                            key: PageStorageKey('customer_list'),
+                            padding: EdgeInsets.all(0),
+                            itemCount: snapshot.data?.length,
+                            itemBuilder: (context, index) {
+                              final customer = snapshot.data![index];
+                              return Dismissible(
+                                direction: DismissDirection.endToStart,
+                                background: Container(
+                                  color: themeData.errorColor,
+                                  padding: EdgeInsets.symmetric(horizontal: 20),
+                                  alignment: AlignmentDirectional.centerEnd,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: <Widget>[
+                                      Text("Delete",
+                                          style: AppTheme.getTextStyle(
+                                              themeData.textTheme.bodyText2!,
+                                              fontWeight: 500,
+                                              color: customAppTheme.onError)),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 8.0),
+                                        child: Icon(
+                                          MdiIcons.deleteOutline,
+                                          color: customAppTheme.onError,
                                         ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 8.0),
-                                          child: Text("Edit",
-                                              style: AppTheme.getTextStyle(
-                                                  themeData
-                                                      .textTheme.bodyText2!,
-                                                  fontWeight: 500,
-                                                  color: themeData
-                                                      .colorScheme.onPrimary)),
-                                        )
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
-                                  secondaryBackground: Container(
-                                    color: themeData.errorColor,
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 20),
-                                    alignment: AlignmentDirectional.centerEnd,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: <Widget>[
-                                        Text("Delete",
-                                            style: AppTheme.getTextStyle(
-                                                themeData.textTheme.bodyText2!,
-                                                fontWeight: 500,
-                                                color: customAppTheme.onError)),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 8.0),
-                                          child: Icon(
-                                            MdiIcons.deleteOutline,
-                                            color: customAppTheme.onError,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  onDismissed: (direction) {
-                                    if (direction ==
-                                        DismissDirection.endToStart) {
-                                      setState(() {
-                                        showSnackbarWithFloating(
-                                            "Deleted", context);
-                                      });
-                                    } else {
-                                      setState(() {
-                                        showSnackbarWithFloating(
-                                            "Edited", context);
-                                      });
-                                    }
-                                  },
-                                  key: UniqueKey(),
-                                  child: ListItem(
-                                    customer: customer,
-                                    themeData: themeData,
-                                  ),
-                                );
-                              },
-                            );
-                          }
+                                ),
+                                onDismissed: (direction) {
+                                  CustomerRepository()
+                                      .delete(_store, customer.id);
+                                },
+                                key: UniqueKey(),
+                                child: ListItem(customer: customer),
+                              );
+                            },
+                          );
                         }
                         return Center(child: CircularProgressIndicator());
-                      }),
+                      })
+                  : Center(child: CircularProgressIndicator()),
             ),
           ],
         ),
@@ -159,10 +120,14 @@ class _CustomerListState extends State<CustomerList> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => CustomerCreate(
-                      store: context.read(storeProvider).state!)));
+            context,
+            MaterialPageRoute(
+              builder: (context) => CustomerForm(
+                store: _store,
+                mode: CREATE,
+              ),
+            ),
+          );
         },
         child: Icon(
           MdiIcons.accountPlusOutline,
@@ -172,36 +137,18 @@ class _CustomerListState extends State<CustomerList> {
       ),
     );
   }
-
-  void showSnackbarWithFloating(String message, BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      new SnackBar(
-        content: new Text(
-          message,
-          style: themeData.textTheme.subtitle2!
-              .merge(TextStyle(color: themeData.colorScheme.onPrimary)),
-        ),
-        backgroundColor: themeData.colorScheme.primary,
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
-  }
 }
 
 class ListItem extends StatelessWidget {
   final Customer customer;
-  final ThemeData themeData;
 
-  const ListItem({Key? key, required this.customer, required this.themeData})
-      : super(key: key);
+  const ListItem({Key? key, required this.customer}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = AppTheme.getTheme();
+
     return InkWell(
-      onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => CustomerView()));
-      },
       child: Padding(
         padding: EdgeInsets.only(top: 16, left: 24, right: 24, bottom: 8),
         child: Row(
@@ -236,6 +183,18 @@ class ListItem extends StatelessWidget {
           ],
         ),
       ),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CustomerForm(
+              store: context.read(storeNotifierProvider).state,
+              mode: UPDATE,
+              customer: customer,
+            ),
+          ),
+        );
+      },
     );
   }
 }

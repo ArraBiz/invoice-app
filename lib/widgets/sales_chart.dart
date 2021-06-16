@@ -12,7 +12,7 @@ class SalesChart extends StatelessWidget {
 
   factory SalesChart.withSampleData() {
     return new SalesChart(
-      _createSampleData() ,
+      _createSampleData(),
       animate: true,
     );
   }

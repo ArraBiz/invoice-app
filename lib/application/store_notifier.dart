@@ -56,12 +56,9 @@ class StoreNotifier extends StateNotifier {
 
   Future<void> getStore() async {
     try {
-      print("initial notifier");
       state = StoreLoading();
-      print("initial loading");
       final store = await _databaseRepository.fetchStore();
       state = StoreLoaded(store);
-      print("initial loaded");
     } catch (e) {
       state = StoreError("Couldn't fetch store.");
     }

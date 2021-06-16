@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:invoice/core/theme.dart';
 import 'package:invoice/core/size_config.dart';
+import 'package:invoice/core/theme.dart';
 import 'package:invoice/screens/products/ProductView.dart';
-import 'package:invoice/widgets/CustomAppBar.dart';
+import 'package:invoice/widgets/app_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class Products extends StatefulWidget {
@@ -44,7 +44,7 @@ class _ProductsState extends State<Products> {
           padding: Spacing.only(top: 48),
           child: Column(
             children: [
-              CustomAppBar(title: "Products"),
+              ABAppBar(title: "Products"),
               Container(
                 margin: Spacing.symmetric(horizontal: 24, vertical: 16),
                 child: Row(

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:invoice/core/theme.dart';
 import 'package:invoice/core/size_config.dart';
+import 'package:invoice/core/theme.dart';
 import 'package:invoice/screens/profile/Profile.dart';
 import 'package:invoice/screens/settings/Settings.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class CustomAppBar extends StatelessWidget {
+class ABAppBar extends StatelessWidget {
   final String title;
 
-  const CustomAppBar({
+  const ABAppBar({
     Key? key,
     required this.title,
   }) : super(key: key);

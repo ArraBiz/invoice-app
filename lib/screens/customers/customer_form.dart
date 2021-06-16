@@ -6,7 +6,7 @@ import 'package:invoice/core/theme.dart';
 import 'package:invoice/models/customer.dart';
 import 'package:invoice/objectbox.g.dart';
 import 'package:invoice/repositories/customer_repository.dart';
-import 'package:invoice/widgets/text_field.dart';
+import 'package:invoice/widgets/form_field.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CustomerForm extends StatefulWidget {
@@ -84,7 +84,7 @@ class _CustomerFormState extends State<CustomerForm> {
                   children: <Widget>[
                     Container(
                       margin: EdgeInsets.only(top: MySize.size12!),
-                      child: ABTextField(
+                      child: ABFormField(
                         initialValue:
                             widget.mode == UPDATE ? widget.customer?.name : '',
                         validator: (value) {
@@ -101,7 +101,7 @@ class _CustomerFormState extends State<CustomerForm> {
                     ),
                     Container(
                       margin: EdgeInsets.only(top: MySize.size12!),
-                      child: ABTextField(
+                      child: ABFormField(
                         initialValue:
                             widget.mode == UPDATE ? widget.customer?.email : '',
                         validator: (value) {
@@ -120,7 +120,7 @@ class _CustomerFormState extends State<CustomerForm> {
                     ),
                     Container(
                       margin: EdgeInsets.only(top: MySize.size12!),
-                      child: ABTextField(
+                      child: ABFormField(
                         initialValue: widget.mode == UPDATE
                             ? widget.customer?.mobile
                             : '',
@@ -153,7 +153,7 @@ class _CustomerFormState extends State<CustomerForm> {
                   children: <Widget>[
                     Container(
                       margin: EdgeInsets.only(top: MySize.size16!),
-                      child: ABTextField(
+                      child: ABFormField(
                         initialValue: widget.mode == UPDATE
                             ? widget.customer?.address
                             : '',

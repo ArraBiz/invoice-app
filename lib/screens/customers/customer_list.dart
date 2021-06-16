@@ -6,7 +6,7 @@ import 'package:invoice/core/theme.dart';
 import 'package:invoice/models/customer.dart';
 import 'package:invoice/providers.dart';
 import 'package:invoice/repositories/customer_repository.dart';
-import 'package:invoice/widgets/CustomAppBar.dart';
+import 'package:invoice/widgets/app_bar.dart';
 import 'package:invoice/widgets/empty_list.dart';
 import 'package:invoice/widgets/search_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -51,70 +51,90 @@ class _CustomerListState extends State<CustomerList>
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-      body: Container(
-        padding: Spacing.only(top: 48),
-        color: customAppTheme.bgLayer1,
-        child: Column(
-          children: [
-            CustomAppBar(title: "Customers"),
-            SearchBar(
-              placeholder: "Search customers",
-            ),
-            Expanded(
-              child: !_loading
-                  ? StreamBuilder<List<Customer>>(
-                      stream: _stream,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return EmptyList(message: "No Customers");
-                          }
-                          return ListView.builder(
-                            key: PageStorageKey('customer_list'),
-                            padding: EdgeInsets.all(0),
-                            itemCount: snapshot.data?.length,
-                            itemBuilder: (context, index) {
-                              final customer = snapshot.data![index];
-                              return Dismissible(
-                                direction: DismissDirection.endToStart,
-                                background: Container(
-                                  color: themeData.errorColor,
-                                  padding: EdgeInsets.symmetric(horizontal: 20),
-                                  alignment: AlignmentDirectional.centerEnd,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: <Widget>[
-                                      Text("Delete",
-                                          style: AppTheme.getTextStyle(
-                                              themeData.textTheme.bodyText2!,
-                                              fontWeight: 500,
-                                              color: customAppTheme.onError)),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 8.0),
-                                        child: Icon(
-                                          MdiIcons.deleteOutline,
-                                          color: customAppTheme.onError,
+      body: GestureDetector(
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.unfocus();
+          }
+        },
+        child: Container(
+          padding: Spacing.only(top: 48),
+          color: customAppTheme.bgLayer1,
+          child: Column(
+            children: [
+              ABAppBar(title: "Customers"),
+              ABSearchBar(
+                placeholder: "Search customers",
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      _stream = CustomerRepository().getAll(_store);
+                    });
+                  }
+                  setState(() {
+                    _stream = CustomerRepository().search(_store, value);
+                  });
+                },
+              ),
+              Expanded(
+                child: !_loading
+                    ? StreamBuilder<List<Customer>>(
+                        stream: _stream,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            if (snapshot.data!.isEmpty) {
+                              return EmptyList(message: "No Customers");
+                            }
+                            return ListView.builder(
+                              key: PageStorageKey('customer_list'),
+                              padding: EdgeInsets.all(0),
+                              itemCount: snapshot.data?.length,
+                              itemBuilder: (context, index) {
+                                final customer = snapshot.data![index];
+                                return Dismissible(
+                                  direction: DismissDirection.endToStart,
+                                  background: Container(
+                                    color: themeData.errorColor,
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 20),
+                                    alignment: AlignmentDirectional.centerEnd,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: <Widget>[
+                                        Text("Delete",
+                                            style: AppTheme.getTextStyle(
+                                                themeData.textTheme.bodyText2!,
+                                                fontWeight: 500,
+                                                color: customAppTheme.onError)),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 8.0),
+                                          child: Icon(
+                                            MdiIcons.deleteOutline,
+                                            color: customAppTheme.onError,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                onDismissed: (direction) {
-                                  CustomerRepository()
-                                      .delete(_store, customer.id);
-                                },
-                                key: UniqueKey(),
-                                child: ListItem(customer: customer),
-                              );
-                            },
-                          );
-                        }
-                        return Center(child: CircularProgressIndicator());
-                      })
-                  : Center(child: CircularProgressIndicator()),
-            ),
-          ],
+                                  onDismissed: (direction) {
+                                    CustomerRepository()
+                                        .delete(_store, customer.id);
+                                  },
+                                  key: UniqueKey(),
+                                  child: ListItem(customer: customer),
+                                );
+                              },
+                            );
+                          }
+                          return Center(child: CircularProgressIndicator());
+                        })
+                    : Center(child: CircularProgressIndicator()),
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:invoice/core/theme.dart';
 
-class ABTextField extends StatelessWidget {
+class ABFormField extends StatelessWidget {
   final String hintText;
   final String? initialValue;
   final TextInputType? keyboardType;
@@ -13,7 +13,7 @@ class ABTextField extends StatelessWidget {
   final int? maxLength, minLines, maxLines;
   final MaxLengthEnforcement? maxLengthEnforcement;
 
-  const ABTextField(
+  const ABFormField(
       {Key? key,
       required this.hintText,
       this.initialValue,

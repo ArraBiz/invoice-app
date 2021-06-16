@@ -1,24 +1,19 @@
-/*
-* File : Custom On boarding wizard
-* Version : 1.0.0
-* */
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'Animation_Gesture/page_dragger.dart';
-import 'Animation_Gesture/page_reveal.dart';
-import 'UI/pager_indicator.dart';
-import 'UI/pages.dart';
+import 'animation/page_dragger.dart';
+import 'animation/page_reveal.dart';
+import 'ui/pager_indicator.dart';
+import 'ui/pages.dart';
 
-class CustomOnBoardingWidget extends StatefulWidget {
+class ABOnBoarding extends StatefulWidget {
   final List<PageViewModel> pages;
   final Color selectedIndicatorColor;
   final Color unSelectedIndicatorColor;
   final Widget skipWidget, doneWidget;
 
-  const CustomOnBoardingWidget(
+  const ABOnBoarding(
       {Key? key,
       required this.pages,
       required this.selectedIndicatorColor,
@@ -28,11 +23,10 @@ class CustomOnBoardingWidget extends StatefulWidget {
       : super(key: key);
 
   @override
-  _CustomOnBoardingWidgetState createState() =>
-      new _CustomOnBoardingWidgetState();
+  _ABOnBoardingState createState() => new _ABOnBoardingState();
 }
 
-class _CustomOnBoardingWidgetState extends State<CustomOnBoardingWidget>
+class _ABOnBoardingState extends State<ABOnBoarding>
     with TickerProviderStateMixin {
   late StreamController<SlideUpdate> slideUpdateStream;
   late AnimatedPageDragger animatedPageDragger;
@@ -44,7 +38,7 @@ class _CustomOnBoardingWidgetState extends State<CustomOnBoardingWidget>
 
   double slidePercent = 0.0;
 
-  _CustomOnBoardingWidgetState() {
+  _ABOnBoardingState() {
     slideUpdateStream = new StreamController<SlideUpdate>();
 
     slideUpdateStream.stream.listen((SlideUpdate event) {

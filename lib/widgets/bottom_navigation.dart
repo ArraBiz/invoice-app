@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../core/theme.dart';
 import '../core/size_config.dart';
+import '../core/theme.dart';
 
-class CustomBottomNavigation extends StatelessWidget {
+class ABBottomNavigation extends StatelessWidget {
   final int selectedIndex;
   final double iconSize;
   final Color? backgroundColor;
   final bool showElevation;
   final Duration animationDuration;
-  final List<CustomBottomNavigationBarItem> items;
+  final List<ABBottomNavigationBarItem> items;
   final ValueChanged<int> onItemSelected;
   final MainAxisAlignment mainAxisAlignment;
   final double itemCornerRadius;
@@ -19,7 +19,7 @@ class CustomBottomNavigation extends StatelessWidget {
   final Color selectedItemOverlayColor;
   final TextStyle? textStyle;
 
-  CustomBottomNavigation({
+  ABBottomNavigation({
     Key? key,
     this.selectedIndex = 0,
     this.showElevation = true,
@@ -93,7 +93,7 @@ class CustomBottomNavigation extends StatelessWidget {
 class _ItemWidget extends StatelessWidget {
   final double iconSize;
   final bool isSelected;
-  final CustomBottomNavigationBarItem item;
+  final ABBottomNavigationBarItem item;
   final Color backgroundColor;
   final double itemCornerRadius;
   final Duration animationDuration;
@@ -185,7 +185,7 @@ class _ItemWidget extends StatelessWidget {
   }
 }
 
-class CustomBottomNavigationBarItem {
+class ABBottomNavigationBarItem {
   final Icon icon;
   final String title;
   final Color activeColor;
@@ -193,7 +193,7 @@ class CustomBottomNavigationBarItem {
   final Color? inactiveColor;
   final TextAlign? textAlign;
 
-  CustomBottomNavigationBarItem({
+  ABBottomNavigationBarItem({
     required this.icon,
     required this.title,
     this.activeColor = Colors.blue,

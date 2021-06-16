@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:invoice/core/size_config.dart';
 import 'package:invoice/core/theme.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class SearchBar extends StatefulWidget {
+class ABSearchBar extends StatefulWidget {
   final String placeholder;
+  final void Function(String)? onChanged;
 
-  const SearchBar({Key? key, required this.placeholder}) : super(key: key);
+  const ABSearchBar({Key? key, required this.placeholder, this.onChanged})
+      : super(key: key);
 
   @override
-  _SearchBarState createState() => _SearchBarState();
+  _ABSearchBarState createState() => _ABSearchBarState();
 }
 
-class _SearchBarState extends State<SearchBar> {
+class _ABSearchBarState extends State<ABSearchBar> {
   late ThemeData themeData;
   late CustomAppTheme customAppTheme;
 
@@ -43,7 +44,8 @@ class _SearchBarState extends State<SearchBar> {
                   Expanded(
                     child: Container(
                       margin: EdgeInsets.only(left: MySize.size16!),
-                      child: TextFormField(
+                      child: TextField(
+                        onChanged: widget.onChanged,
                         style: AppTheme.getTextStyle(
                             themeData.textTheme.bodyText2!,
                             letterSpacing: 0,
@@ -55,7 +57,8 @@ class _SearchBarState extends State<SearchBar> {
                               themeData.textTheme.bodyText2!,
                               letterSpacing: 0,
                               color: themeData.colorScheme.onBackground,
-                              fontWeight: 500),
+                              fontWeight: 500,
+                              muted: true),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(MySize.size8!),
@@ -72,28 +75,14 @@ class _SearchBarState extends State<SearchBar> {
                               ),
                               borderSide: BorderSide.none),
                           isDense: true,
-                          contentPadding: EdgeInsets.all(0),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 0),
                         ),
                         textInputAction: TextInputAction.search,
                         textCapitalization: TextCapitalization.sentences,
                       ),
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(MySize.size4!),
-                    decoration: BoxDecoration(
-                        color: themeData.colorScheme.primary,
-                        borderRadius:
-                            BorderRadius.all(Radius.circular(MySize.size8!))),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(MySize.size8!),
-                      child: Icon(
-                        MdiIcons.magnify,
-                        color: themeData.colorScheme.onPrimary,
-                        size: MySize.size20,
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),

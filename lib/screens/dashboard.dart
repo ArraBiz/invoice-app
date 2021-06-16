@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:invoice/core/theme.dart';
 import 'package:invoice/core/size_config.dart';
-import 'package:invoice/widgets/CustomAppBar.dart';
-import 'package:invoice/widgets/SalesChart.dart';
+import 'package:invoice/core/theme.dart';
+import 'package:invoice/widgets/app_bar.dart';
+import 'package:invoice/widgets/sales_chart.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class Dashboard extends StatefulWidget {
@@ -30,7 +30,7 @@ class _DashboardState extends State<Dashboard> {
         body: Column(
           children: [
             Container(
-              child: CustomAppBar(title: "Dashboard"),
+              child: ABAppBar(title: "Dashboard"),
               padding: EdgeInsets.only(top: 48, bottom: 12),
             ),
             Expanded(

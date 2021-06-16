@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:invoice/core/theme.dart';
 import 'package:invoice/core/size_config.dart';
-import 'package:invoice/screens/Tabs.dart';
-import 'package:invoice/widgets/onBoarding/CustomOnBoardingWidget.dart';
-import 'package:invoice/widgets/onBoarding/UI/pages.dart';
+import 'package:invoice/core/theme.dart';
+import 'package:invoice/screens/tabs.dart';
+import 'package:invoice/widgets/onboarding/onboarding.dart';
+import 'package:invoice/widgets/onboarding/ui/pages.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class _OnboardingState extends State<Onboarding> {
     themeData = Theme.of(context);
     customAppTheme = AppTheme.getCustomAppTheme();
     return Scaffold(
-        body: CustomOnBoardingWidget(
+        body: ABOnBoarding(
       pages: <PageViewModel>[
         PageViewModel(
           customAppTheme.bgLayer1,

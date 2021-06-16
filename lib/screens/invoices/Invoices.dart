@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:invoice/core/theme.dart';
 import 'package:invoice/core/size_config.dart';
+import 'package:invoice/core/theme.dart';
 import 'package:invoice/screens/invoices/InvoiceView.dart';
-import 'package:invoice/widgets/CustomAppBar.dart';
+import 'package:invoice/widgets/app_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class Invoices extends StatefulWidget {
@@ -40,7 +40,7 @@ class _InvoicesState extends State<Invoices> {
           padding: Spacing.only(top: 48),
           child: Column(
             children: [
-              CustomAppBar(title: "Invoices"),
+              ABAppBar(title: "Invoices"),
               Container(
                 margin: Spacing.symmetric(horizontal: 24, vertical: 16),
                 child: Row(

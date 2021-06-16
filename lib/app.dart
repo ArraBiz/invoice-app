@@ -5,7 +5,7 @@ import 'package:invoice/core/size_config.dart';
 import 'package:invoice/providers.dart';
 
 import 'core/theme.dart';
-import 'screens/Onboarding.dart';
+import 'screens/onboarding.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
